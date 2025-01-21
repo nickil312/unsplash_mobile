@@ -1,0 +1,41 @@
+import {Link, Stack} from 'expo-router';
+import {Pressable} from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Colors from "@/constants/Colors";
+import React from "react";
+import {useColorScheme} from "@/components/useColorScheme";
+import {useTranslation} from "react-i18next";
+import {MaterialIcons} from "@expo/vector-icons";
+
+export default function HomeLayout() {
+    const colorScheme = useColorScheme();
+    const {t} = useTranslation();
+
+    return (
+        <Stack>
+            <Stack.Screen name="index"
+                          options={{
+                              title: `${t('Home')}`,
+                              headerRight: () => (
+                                  <Link href="/modal" asChild>
+                                      <Pressable>
+                                          {({ pressed }) => (
+                                              // <FontAwesome
+                                              //     name="info-circle"
+                                              //     size={25}
+                                              //     color={Colors[colorScheme ?? 'light'].text}
+                                              //     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                                              // />
+                                              <MaterialIcons name="info-outline" size={24} color={colorScheme === "dark" ? 'white':"black"}/>
+                                          )}
+                                      </Pressable>
+                                  </Link>
+                              )
+                          }}
+                          />
+            <Stack.Screen name="details/[id]" options={{
+                title: `${t('Photo')}`,
+            }}/>
+        </Stack>
+    );
+}

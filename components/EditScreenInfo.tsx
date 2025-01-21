@@ -15,6 +15,7 @@ import {useDispatch} from "react-redux";
 import {AppDispatch} from "@/globalRedux/store";
 import { clearUsersWithSearchCount } from '@/globalRedux/users/slice';
 import {fetchAllPostsWithSearch} from "@/globalRedux/posts/asyncActions";
+import {Link} from "expo-router";
 
 export default function EditScreenInfo({ path }: { path: string }) {
   const colorScheme = Appearance.getColorScheme();
@@ -69,6 +70,8 @@ export default function EditScreenInfo({ path }: { path: string }) {
           darkColor="rgba(255,255,255,0.8)">
           Open up the code for this screen:
         </Text>
+        <Link href="/details/1">View details - 1</Link>
+        <Link href="/details/2">View details - 2</Link>
         <Text
             style={styles.getStartedText}
             lightColor="rgba(0,0,0,0.8)"
