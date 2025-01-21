@@ -2,15 +2,19 @@ import {Link, Stack} from 'expo-router';
 import {Pressable} from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Colors from "@/constants/Colors";
-import React from "react";
+import React, {useEffect} from "react";
 import {useColorScheme} from "@/components/useColorScheme";
 import {useTranslation} from "react-i18next";
 import {MaterialIcons} from "@expo/vector-icons";
+import {AppDispatch, RootState} from "@/globalRedux/store";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAuthMe} from "@/globalRedux/users/asyncActions";
+import * as SecureStore from "expo-secure-store";
+import i18next from "../../../i18n";
 
 export default function HomeLayout() {
     const colorScheme = useColorScheme();
     const {t} = useTranslation();
-
     return (
         <Stack>
             <Stack.Screen name="index"

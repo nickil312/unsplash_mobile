@@ -37,6 +37,12 @@ export default function ProfileLayout() {
             <Stack.Screen name="login" options={{
                 title: `${t('Authtorization')}`,
             }}/>
+            <Stack.Screen name="details/[id]" options={{
+                title: "profile",
+            }}/>
+            <Stack.Screen name="users/[id]" options={{
+                title: "profile",
+            }}/>
         </Stack>
     );
 }

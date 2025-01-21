@@ -10,6 +10,7 @@ import {
     TokenCheckState, UserHire, UserIdForSend,
     Users, UsersStatistics
 } from "@/globalRedux/users/types";
+import * as SecureStore from "expo-secure-store";
 export const fetchAllUsersWithSearch = createAsyncThunk<Users[], SearchAndSortParams>(
     'users/fetchAllUsersWithSearch',
     async (params) => {
@@ -36,7 +37,9 @@ export const fetchAuth = createAsyncThunk<Users,LoginData>(
         console.log('user auth', data)
 
         if (data.token) {
-            localStorage.setItem('token', data.token);
+            await SecureStore.setItemAsync('token', data.token);
+
+            // localStorage.setItem('token', data.token);
             console.log("data token",data.token)
         }
         return data;
@@ -160,7 +163,7 @@ export const fetchGetPopularUsers = createAsyncThunk<Users,PopularUsers>(
         return data;
     });
 export const fetchUsersStatistics = createAsyncThunk<UsersStatistics[]>(
-    'posts/fetchUsersStatistics',
+    'users/fetchUsersStatistics',
     async () => {
 
         // console.log(params)
@@ -169,7 +172,7 @@ export const fetchUsersStatistics = createAsyncThunk<UsersStatistics[]>(
         return data;
     })
 export const fetchRolesDatabase = createAsyncThunk<RolesForTable[]>(
-    'posts/fetchRolesDatabase',
+    'users/fetchRolesDatabase',
     async () => {
 
         // console.log(params)
@@ -178,7 +181,7 @@ export const fetchRolesDatabase = createAsyncThunk<RolesForTable[]>(
         return data;
     })
 export const fetchCollectionsDetail = createAsyncThunk<Posts[],CollectionsDetail>(
-    'posts/fetchCollectionsDetail',
+    'users/fetchCollectionsDetail',
     async (params) => {
 
         // console.log(params)

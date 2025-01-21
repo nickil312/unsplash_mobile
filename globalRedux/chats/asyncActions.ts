@@ -32,9 +32,9 @@ export const fetchOld_Messages = createAsyncThunk<Messages[],ChatIdAndPageReq>(
 export const fetchChatDetail = createAsyncThunk<Chats,ChatIdReq>(
     'chats/fetchChatDetail', async (params) => {
 
-        console.log('chat details')
+        console.log('chat users')
         const {data} = await axios.get<Chats>(`/chat/details/${params.chatId}`)
-        console.log('chat details', data)
+        console.log('chat users', data)
         return data;
     })
 export const fetchChatImageChange = createAsyncThunk<Chats,ChatChangeImageReq>(

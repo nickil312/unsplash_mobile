@@ -22,7 +22,7 @@ import {
 import {FormData} from "@/app/[lang]/(photos & illustrations)/photos/create/CreateForm";
 import {ReportsCardProps} from "@/app/components/Cards/ReportsCard";
 export const fetchAllPosts = createAsyncThunk<Posts[], SearchAndSortParams>(
-    'posts/fetchAllPosts', async (params) => {
+    'users/fetchAllPosts', async (params) => {
         const {
             searchtext,
             page,
@@ -35,14 +35,14 @@ export const fetchAllPosts = createAsyncThunk<Posts[], SearchAndSortParams>(
             limit,
 
         } = params
-        console.log('all posts params',params)
+        console.log('all users params',params)
 
         const {data} = await axios.get<Posts[]>(`/postgresql/posts/?page=${page}&role_id=0&searchtext=&posttype=${posttype}&category=&sort=${sort}&license=${license}&orientation=${orientation}&limit=${limit}&search=false`)
-    console.log('all posts', data)
+    console.log('all users', data)
     return data;
 })
 export const fetchAllPostsWithSearch = createAsyncThunk<Posts[], SearchAndSortParams>(
-    'posts/fetchAllPostsWithSearch',
+    'users/fetchAllPostsWithSearch',
     async (params) => {
         const {
             searchtext,
@@ -56,11 +56,11 @@ export const fetchAllPostsWithSearch = createAsyncThunk<Posts[], SearchAndSortPa
         } = params
         console.log(params)
     const {data} = await axios.get<Posts[]>(`/postgresql/posts/?page=${page}&role_id=0&searchtext=${searchtext}&posttype=${posttype}&category=&sort=${sort}&license=${license}&orientation=${orientation}&limit=${limit}&search=true`)
-    console.log('all posts with search', data)
+    console.log('all users with search', data)
     return data;
 })
 export const fetchAllPostsWithCategory = createAsyncThunk<Posts[], SearchAndSortParams>(
-    'posts/fetchAllPostsWithCategory',
+    'users/fetchAllPostsWithCategory',
     async (params) => {
         const {
             searchtext,
@@ -75,11 +75,11 @@ export const fetchAllPostsWithCategory = createAsyncThunk<Posts[], SearchAndSort
         } = params
         console.log(params)
         const {data} = await axios.get<Posts[]>(`/postgresql/posts/?page=${page}&role_id=0&searchtext=&posttype=${posttype}&category=${category}&sort=${sort}&license=${license}&orientation=${orientation}&limit=${limit}&search=false`)
-        console.log('all posts with categories', data)
+        console.log('all users with categories', data)
         return data;
     })
 export const fetchOnePost = createAsyncThunk<Posts, PostsIdProps>(
-    'posts/fetchOnePost',
+    'users/fetchOnePost',
     async (params) => {
         const {
             _id,
@@ -91,7 +91,7 @@ export const fetchOnePost = createAsyncThunk<Posts, PostsIdProps>(
         return data;
     })
 export const fetchPosts_Likes_coll_another_user = createAsyncThunk<Posts[], UserPosts_Likes_coll_Params>(
-    'posts/fetchPosts_Likes_coll_another_user',
+    'users/fetchPosts_Likes_coll_another_user',
     async (params) => {
         const {
             bdType,
@@ -100,47 +100,47 @@ export const fetchPosts_Likes_coll_another_user = createAsyncThunk<Posts[], User
         } = params
         console.log(params)
         const {data} = await axios.get<Posts[]>(`/postgresql/posts/user/?page=${page}&bdType=${bdType}&userIdAccViewed=${userIdAccViewed}`)
-        console.log('user posts likes coll', data)
+        console.log('user users likes coll', data)
         return data;
     })
 export const fetchCreatePost = createAsyncThunk<Posts[], FormData>(
-    'posts/fetchCreatePost',
+    'users/fetchCreatePost',
     async (params) => {
 
         console.log(params)
         const {data} = await axios.post<Posts[]>(`/postgresql/posts/`,params)
-        console.log('create posts ', data)
+        console.log('create users ', data)
         return data;
     })
 export const fetchUpdatePost = createAsyncThunk<Posts[], FormData>(
-    'posts/fetchUpdatePost',
+    'users/fetchUpdatePost',
     async (params) => {
 
         console.log(params)
         const {data} = await axios.patch<Posts[]>(`/postgresql/posts/${params._id}`,params)
-        console.log('update posts ', data)
+        console.log('update users ', data)
         return data;
     })
 export const fetchDeletePost = createAsyncThunk<Posts[], DeleteId>(
-    'posts/fetchDeletePost',
+    'users/fetchDeletePost',
     async (params) => {
 
         console.log(params)
         const {data} = await axios.delete<Posts[]>(`/postgresql/posts/${params._id}`)
-        console.log('update posts ', data)
+        console.log('update users ', data)
         return data;
     })
 export const fetchBannedPosts = createAsyncThunk<Posts[], Banned_Params>(
-    'posts/fetchBannedPosts',
+    'users/fetchBannedPosts',
     async (params) => {
 
         console.log(params)
         const {data} = await axios.get<Posts[]>(`/postgresql/posts/ban_post/get/?page=${params.page}`)
-        console.log('banned posts ', data)
+        console.log('banned users ', data)
         return data;
     });
 export const fetchBanPost = createAsyncThunk<Posts[], Ban_Post>(
-    'posts/fetchBanPost',
+    'users/fetchBanPost',
     async (params) => {
 
         console.log(params)
@@ -149,7 +149,7 @@ export const fetchBanPost = createAsyncThunk<Posts[], Ban_Post>(
         return data;
     })
 export const fetchUnBanPost = createAsyncThunk<Posts[], Ban_Post>(
-    'posts/fetchUnBanPost',
+    'users/fetchUnBanPost',
     async (params) => {
 
         console.log(params)
@@ -158,7 +158,7 @@ export const fetchUnBanPost = createAsyncThunk<Posts[], Ban_Post>(
         return data;
     })
 export const fetchPostStatistics = createAsyncThunk<PostsStatistics[], PostsIdPropsForStatistics>(
-    'posts/fetchPostStatistics',
+    'users/fetchPostStatistics',
     async (params) => {
 
         console.log(params)
@@ -167,7 +167,7 @@ export const fetchPostStatistics = createAsyncThunk<PostsStatistics[], PostsIdPr
         return data;
     })
 export const fetchPostsDatabase = createAsyncThunk<Posts[]>(
-    'posts/fetchPostsDatabase',
+    'users/fetchPostsDatabase',
     async () => {
 
         // console.log(params)
@@ -176,7 +176,7 @@ export const fetchPostsDatabase = createAsyncThunk<Posts[]>(
         return data;
     })
 export const fetchReportsDatabase = createAsyncThunk<ReportsDatabase[]>(
-    'posts/fetchReportsDatabase',
+    'users/fetchReportsDatabase',
     async () => {
 
         // console.log(params)
@@ -185,7 +185,7 @@ export const fetchReportsDatabase = createAsyncThunk<ReportsDatabase[]>(
         return data;
     })
 export const fetchLikesViewsDatabase = createAsyncThunk<ViewsLikes[]>(
-    'posts/fetchLikesViewsDatabase',
+    'users/fetchLikesViewsDatabase',
     async () => {
 
         // console.log(params)
@@ -194,7 +194,7 @@ export const fetchLikesViewsDatabase = createAsyncThunk<ViewsLikes[]>(
         return data;
     });
 export const fetchAllCollectionsDatabase = createAsyncThunk<Collections[]>(
-    'posts/fetchAllCollectionsDatabase',
+    'users/fetchAllCollectionsDatabase',
     async () => {
 
         // console.log(params)
@@ -203,16 +203,16 @@ export const fetchAllCollectionsDatabase = createAsyncThunk<Collections[]>(
         return data;
     });
 export const fetchCollectionsPostsDatabase = createAsyncThunk<CollectionPostsDatabase[]>(
-    'posts/fetchCollectionsPostsDatabase',
+    'users/fetchCollectionsPostsDatabase',
     async () => {
 
         // console.log(params)
         const {data} = await axios.get<CollectionPostsDatabase[]>(`/postgresql/database/collectionsposts`)
-        console.log('database  collections posts', data)
+        console.log('database  collections users', data)
         return data;
     });
 export const fetchLogsDatabase = createAsyncThunk<Logs[]>(
-    'posts/fetchLogsDatabase',
+    'users/fetchLogsDatabase',
     async () => {
 
         // console.log(params)
@@ -221,25 +221,25 @@ export const fetchLogsDatabase = createAsyncThunk<Logs[]>(
         return data;
     });
 export const fetchReportedPosts = createAsyncThunk<ReportsCardProps[],Banned_Params>(
-    'posts/fetchReportedPosts',
+    'users/fetchReportedPosts',
     async (params) => {
 
         // console.log(params)
         const {data} = await axios.get<ReportsCardProps[]>(`/postgresql/posts/report/?page=${params.page}`)
-        console.log('reported posts', data)
+        console.log('reported users', data)
         return data;
     });
 export const fetchReportedPostsDetail = createAsyncThunk<ReportDetail[],DeleteId>(
-    'posts/fetchReportedPostsDetail',
+    'users/fetchReportedPostsDetail',
     async (params) => {
 
         // console.log(params)
         const {data} = await axios.get<ReportDetail[]>(`/postgresql/posts/report/${params._id}`)
-        console.log('reported posts detail', data)
+        console.log('reported users detail', data)
         return data;
     });
 export const fetchCreateReportForPost = createAsyncThunk<ReportCreateForm[],ReportCreateForm>(
-    'posts/fetchCreateReportForPost',
+    'users/fetchCreateReportForPost',
     async (params) => {
 
         const {data} = await axios.post<ReportCreateForm[]>(`/postgresql/posts/report/${params.post_id}`,params)
@@ -247,7 +247,7 @@ export const fetchCreateReportForPost = createAsyncThunk<ReportCreateForm[],Repo
         return data;
     });
 export const fetchCollectionsWithSearch = createAsyncThunk<Collections[],SearchAndSortParams>(
-    'posts/fetchCollectionsWithSearch',
+    'users/fetchCollectionsWithSearch',
     async (params) => {
         const {
             searchtext,
@@ -266,7 +266,7 @@ export const fetchCollectionsWithSearch = createAsyncThunk<Collections[],SearchA
         return data;
     });
 export const fetchCollectionsForAddImage = createAsyncThunk<Collections[],CollectionAddImageProps>(
-    'posts/fetchCollectionsForAddImage',
+    'users/fetchCollectionsForAddImage',
     async (params) => {
         const {
             post_id,
@@ -279,7 +279,7 @@ export const fetchCollectionsForAddImage = createAsyncThunk<Collections[],Collec
         return data;
     });
 export const fetchAddImageToCollection = createAsyncThunk<Collections[],ImageAddToCollectionProps>(
-    'posts/fetchAddImageToCollection',
+    'users/fetchAddImageToCollection',
     async (params) => {
 
         const {data} = await axios.patch<Collections[]>(`/postgresql/collections`,params)
@@ -287,7 +287,7 @@ export const fetchAddImageToCollection = createAsyncThunk<Collections[],ImageAdd
         return data;
     });
 export const fetchCreateCollection = createAsyncThunk<Collections[],CollectionCreateForm>(
-    'posts/fetchCreateCollection',
+    'users/fetchCreateCollection',
     async (params) => {
 
         const {data} = await axios.post<Collections[]>(`/postgresql/collections`,params)
@@ -295,7 +295,7 @@ export const fetchCreateCollection = createAsyncThunk<Collections[],CollectionCr
         return data;
     });
 export const fetchUpdateCollection = createAsyncThunk<Collections[],CollectionUpdateForm>(
-    'posts/fetchUpdateCollection',
+    'users/fetchUpdateCollection',
     async (params) => {
 
         const {data} = await axios.patch<Collections[]>(`/postgresql/collections/${params.id}`,params)
@@ -303,7 +303,7 @@ export const fetchUpdateCollection = createAsyncThunk<Collections[],CollectionUp
         return data;
     });
 export const fetchDeleteOrRecoverCollection = createAsyncThunk<Collections[],CollectionDeleteOrRecoverForm>(
-    'posts/fetchDeleteOrRecoverCollection',
+    'users/fetchDeleteOrRecoverCollection',
     async (params) => {
 
         const {data} = await axios.delete<Collections[]>(`/postgresql/collections/${params.id}?recover=${params.recover}`)

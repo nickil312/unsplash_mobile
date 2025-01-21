@@ -8,6 +8,9 @@ import {useTranslation} from "react-i18next";
 import i18next from "../../../i18n";
 // import {useRouter} from "expo-router";
 import { Redirect,useRouter, useFocusEffect } from 'expo-router';
+import {fetchAuth} from "@/globalRedux/users/asyncActions";
+import {LoginData} from "@/globalRedux/users/types";
+import {AppDispatch, RootState} from "@/globalRedux/store";
 
 //
 // const RegContainer = styled.View`
@@ -21,33 +24,21 @@ import { Redirect,useRouter, useFocusEffect } from 'expo-router';
 // `
 
 export default function Login () {
-    const isAuth = true
+    const {api_url, data} = useSelector((state: RootState) => state.users);
+
     // const isAuth = useSelector(selectIsAuth); // Считывание статуса авторизации пользователя
-    const dispatch = useDispatch(); // Вызов функции через переменную
+    const dispatch = useDispatch<AppDispatch>(); // Вызов функции через переменную
     const currentTheme = useColorScheme() // Считывание темы телефона
     const {t} = useTranslation(); // Вызов функции перевода текста
     const router = useRouter();
 
-    const { handleSubmit, control, formState: {errors, isValid},} = useForm({
+    const { handleSubmit, control, formState: {errors, isValid},} = useForm<LoginData>({
         defaultValues: {
             email: 'test@test.ru',
             password: '112123',
         },
     })
     const styles = StyleSheet.create({
-    //     regcontainer: {
-    //         flexDirection: "column",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // marginTop: "30%",
-    // backgroundColor: '#D0CECE',
-    // width: "80%",
-    // borderRadius: 15
-    // //         marginTop: 30%,
-    // // backgroundColor: '#D0CECE',
-    // // width: 80%,
-    // // borderRadius: 15px
-    //     },
         label: {
             color: currentTheme === "dark" ? 'white' : 'black',
             marginTop: 20,
@@ -94,24 +85,25 @@ export default function Login () {
     });
 
     const onSubmit = async (values) => {
-        // const data = await dispatch(fetchAuth(values));
+        const data = await dispatch(fetchAuth(values));
 
-        // if (!data.payload) {
-        //     console.log("No payload user no reg")
-        //     Alert.alert(t('WrongPassOrEmail'))
-        //
-        // }
-        // if (data.payload.token) {
-        //     await SecureStore.setItemAsync('token', data.payload.token);
-        //     const lang = await SecureStore.getItemAsync(`language`)
-        //     if (lang !== null) {
-        //         i18next.changeLanguage(lang);
-        //     }
-        //
-        // }
+        if (!data.payload) {
+            console.log("No payload user no reg")
+            Alert.alert(t('WrongPassOrEmail'))
+
+        }
+        console.log("data",data)
+        if (data && data.payload && data.payload.token) {
+            // await SecureStore.setItemAsync('token', data.payload.token);
+            const lang = await SecureStore.getItemAsync(`language`)
+            if (lang !== null) {
+                i18next.changeLanguage(lang);
+            }
+            router.replace('/(tabs)/(profile)')
+        }
     }
 
-    if (isAuth) {
+    if (data !== null) {
         <Redirect href="/(tabs)/(home)" />;
     }
 

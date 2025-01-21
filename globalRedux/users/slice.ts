@@ -18,6 +18,7 @@ import {
 } from "@/globalRedux/users/asyncActions";
 import {RootState} from "@/globalRedux/store";
 import {Collections, Posts} from "@/globalRedux/posts/types";
+import * as SecureStore from "expo-secure-store";
 
 const initialState: UsersSliceState = {
     // api_url: "http://172.20.10.2:4444",
@@ -84,7 +85,8 @@ export const usersSlice = createSlice({
         },
         logout(state){
             state.data = null;
-            localStorage.removeItem('token');
+            SecureStore.deleteItemAsync('token')
+            // localStorage.removeItem('token');
         }
     },
     extraReducers: (builder) => {

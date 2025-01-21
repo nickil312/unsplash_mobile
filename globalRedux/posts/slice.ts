@@ -227,7 +227,7 @@ export const postsSlice = createSlice({
 
             state.postsWithSearch.status = Status.SUCCESS
             // console.log("action", action.payload)
-            // console.log("action posts", action.payload.posts)
+            // console.log("action users", action.payload.users)
             // console.log("action postsCount", action.payload.postsCount)
 
             // } else {
@@ -277,7 +277,7 @@ export const postsSlice = createSlice({
 
             state.posts_another_user.status = Status.SUCCESS
             // console.log("action", action.payload)
-            // console.log("action posts", action.payload.posts)
+            // console.log("action users", action.payload.users)
             // console.log("action postsCount", action.payload.postsCount)
 
             // } else {
@@ -328,7 +328,7 @@ export const postsSlice = createSlice({
 
             state.collectionsWithSearch.status = Status.SUCCESS
             // console.log("action", action.payload)
-            // console.log("action posts", action.payload.posts)
+            // console.log("action users", action.payload.users)
             // console.log("action postsCount", action.payload.postsCount)
 
             // } else {

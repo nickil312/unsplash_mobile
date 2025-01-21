@@ -10,7 +10,8 @@ export default function PostDetail(){
         <Text>
             Detail - {id}
         </Text>
-            <Link href="/details/2">View details - 2</Link>
+            <Link href="/users/2">View users - 2</Link>
+            <Link href="/users/2">View users - 2</Link>
 
         </>
     )
