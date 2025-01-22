@@ -18,7 +18,8 @@ module.exports = {
                 "F5": "#F5F5F5",
                 "CE": "#CECECE",
                 "2A": "#2A2A2A",
-                "E0": "#E0E0E0"
+                "E0": "#E0E0E0",
+                "F2": "#F2F2F2"
             },
         },
     },

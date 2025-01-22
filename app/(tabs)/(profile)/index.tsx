@@ -13,6 +13,7 @@ import {fetchAuthMe} from "@/globalRedux/users/asyncActions";
 import {AccountSkeleton} from "@/components/account/AccountSkeleton";
 import {CircleImage} from "@/components/account/CircleImage";
 import ToggleSwitch from "@/components/account/ToggleSwitch";
+import {useColorScheme} from "@/components/useColorScheme";
 
 export default function TabOneScreen() {
     const {api_url, data} = useSelector((state: RootState) => state.users);
@@ -25,6 +26,17 @@ export default function TabOneScreen() {
     const [isLoading, setIsLoading] = useState(false);
 
     const [isLoadingData, setIsLoadingData] = useState(false)
+
+
+    const currentTheme = useColorScheme();
+
+    const styles = StyleSheet.create({
+        container: {
+            backgroundColor: currentTheme === 'dark' ? 'black' : '#F2F2F2',
+            height: 200,
+        },
+    });
+
     const OnClickLogout = async () => {
         dispatch(logout());
         // await SecureStore.deleteItemAsync('token')
@@ -62,7 +74,7 @@ export default function TabOneScreen() {
                     isLoadingData === true ? (
                         <>
 
-                            <View style={{backgroundColor: "#808080", height: 200}}>
+                            <View style={{backgroundColor: "", height: 200}}>
                                 {/*<AccountSkeleton style={{marginLeft: 15, marginTop: 15}}/>*/}
                                 <Text>asdasd</Text>
 
@@ -74,8 +86,8 @@ export default function TabOneScreen() {
                     ) : (
                         userLogIn === true && data !== null ? (
                             <>
-
-                                <View style={{backgroundColor: "#F2F2F2", height: 200}}>
+                                {/*backgroundColor: "#F2F2F2"*/}
+                                <View style={styles.container}>
                                     <CircleImage img={data.avatarurl} api_url={api_url}/>
 
                                     <Text className={"ml-4 mt-4 dark:color-white color-black"}>{data.fullname}</Text>
@@ -97,7 +109,8 @@ export default function TabOneScreen() {
 
 
                         ) : (
-                            <Redirect href="/(tabs)/(profile)/login"/>
+                            <Text>idi naxui</Text>
+                            // <Redirect href="/(tabs)/(profile)/login"/>
                             // <Regist navigation={navigation}/>
                         )
                     )

@@ -1,4 +1,14 @@
-import {Button, Pressable, SectionList, Text, TouchableOpacity, TouchableWithoutFeedback,StyleSheet, useColorScheme, View} from "react-native";
+import {
+    Button,
+    Pressable,
+    SectionList,
+    Text,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    StyleSheet,
+    useColorScheme,
+    View
+} from "react-native";
 
 import {AccountLikes} from "../Pages/AccountLikes";
 import {AccountCollections} from "../Pages/AccountCollections";
@@ -12,21 +22,20 @@ import {logout} from "@/globalRedux/users/slice";
 import AccountPhotos from "@/components/account/AccountPhotos";
 
 
-export default function ToggleSwitch () {
+export default function ToggleSwitch() {
     const {api_url, data} = useSelector((state: RootState) => state.users);
 
     const [userLogIn, setUserLogIn] = useState(false)
     useEffect(() => {
-        if (data !== null){
+        if (data !== null) {
             setUserLogIn(true)
         }
-    },[data])
+    }, [data])
     const {t} = useTranslation();
 
     const dispatch = useDispatch<AppDispatch>();
     const currentTheme = useColorScheme()
     const [changeThemes, setChangeThemes] = useState("Photos")
-
 
 
     const OnClickLogout = async () => {
@@ -52,6 +61,11 @@ export default function ToggleSwitch () {
             // flex: 1, // Это позволит кнопкам занимать равное пространство
             alignItems: 'center', // Центрируем кнопку по горизонтали
         },
+        exit:{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }
     });
 
     return (
@@ -81,8 +95,10 @@ export default function ToggleSwitch () {
                     </View>
                 </View>
             </View>
-            <View className={"color-red-500 mt-4"}>
-                <Button color="red" title={t('Logout')} onPress={() => OnClickLogout()}/>
+            <View className={"color-red-500 mt-4"} style={styles.exit}>
+
+                    <Button color="red" title={t('Logout')} onPress={() => OnClickLogout()}/>
+
             </View>
 
             {
