@@ -1,98 +1,149 @@
-import {View, Text, useColorScheme, TouchableOpacity, VirtualizedList} from "react-native";
-import {AccountPhotosSkeleton} from "../AccountPhotosSkeleton";
-import styled from "styled-components/native";
-import Post from "../../../components/Post";
+import {View, Text, useColorScheme, TouchableOpacity, VirtualizedList, Button, StyleSheet} from "react-native";
+import Post from "../../components/miniPost/Post";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {selectIsAuth} from "../../../redux/slices/auth";
 import {useNavigation} from "@react-navigation/native";
-import {fetchLikePost, fetchUserLikePosts, fetchUserPost} from "../../../redux/slices/posts";
 import {useTranslation} from "react-i18next";
+import {fetchPosts_Likes_coll_another_user} from "@/globalRedux/posts/asyncActions";
+import {Posts, Status} from "@/globalRedux/posts/types";
+import {AppDispatch, RootState} from "@/globalRedux/store";
 
-export const AccountLikes = () => {
+export default function AccountLikes () {
     const currentTheme = useColorScheme()
-    const isAuth = useSelector(selectIsAuth);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const navigation = useNavigation()
     const [isLoading, setIsLoading] = useState(true);
     // const [abn, setabn] = useState(0);
-    const {user_likes_posts} = useSelector(state => state.posts);
-    const {data, status} = useSelector(state => state.auth);
     const {t} = useTranslation();
+    const {items, status} = useSelector((state: RootState) => state.posts.posts_another_user);
+    const {api_url, data} = useSelector((state: RootState) => state.users);
+
+    const [page, setPage] = useState<number>(0);
+    const [posts, setPosts] = useState<Posts[]>([]);
 
 
-    const MainTitle = styled.Text`
-        margin-left: 15px;
-        flex-direction: row;
-        align-items: center;
-        font-size: 20px;
-        font-weight: bold;
-        color: ${currentTheme === "dark" ? 'white' : 'black'};
+    const styles = StyleSheet.create({
+        title: {
+            marginLeft: 15,
+            flexDirection: 'row',
+            alignItems: 'center',
+            fontSize: 20,
+            fontWeight: 'bold',
 
-    `;
+        },
+    })
     useEffect(() => {
-        setIsLoading(true)
-        dispatch(fetchUserLikePosts(data._id))
-        // setabn(abn + 1)
-        // console.log("//////////////////////")
-        // // console.log(data)
-        // console.log(user_likes_posts)
-        // console.log("//////////////////////")
-        // console.log(`loading data ${abn}`)
-        setIsLoading(false)
-    }, [])
+        if (data !== null) {
+            loadPosts();
+        }
+    }, [page]);
+
+    const loadTest = () => {
+        console.log("liadinnaoinosjdflkdsf")
+        setPage(page+ 1);
+
+    }
+    const loadPosts = async () => {
+        if (data !== null ) { // Проверяем, что не идет загрузка
+
+            console.log("currentPage",page)
+            const posts_data = await dispatch(fetchPosts_Likes_coll_another_user({
+                bdType: "likes",
+                page:page,
+                userIdAccViewed: data._id
+            }));
+            if (posts_data.meta.requestStatus === 'fulfilled') {
+                // Получаем посты из payload
+                const newPosts: Posts[] = posts_data.payload.posts;
+
+
+                if (newPosts) {
+                    // Фильтруем новые посты, чтобы избежать дубликатов по id
+                    const uniquePosts = newPosts.filter((newPost: Posts) =>
+                        !posts.some(existingPost => existingPost._id === newPost._id)
+                    );
+
+                    // Если есть уникальные посты, добавляем их и увеличиваем страницу
+                    if (uniquePosts.length > 0) {
+                        setPosts(prevPosts => [...prevPosts, ...uniquePosts]);
+                        // setPage(prevPage => prevPage + 1);
+
+                    } else {
+                        // Если уникальных постов нет, увеличиваем номер страницы
+                        // setPage(prevPage => prevPage + 1);
+                    }
+                }
+
+                // // Обновляем состояние posts
+                // if (newPosts) {
+                //     // Фильтруем новые посты, чтобы избежать дубликатов по id
+                //     const uniquePosts = newPosts.filter((newPost:Posts) =>
+                //         !posts.some(existingPost => existingPost._id === newPost._id)
+                //     );
+                //
+                //     // Обновляем состояние posts, добавляя только уникальные посты
+                //     setPosts(prevPosts => [...prevPosts, ...uniquePosts]);
+                // }
+            }
+
+        }
+    };
+
     const getItem = (data, index) => {
         return data[index];
     };
-    //&& user_likes_posts.status === 'loading'
-    if (isLoading) {
-        return (
-            <AccountPhotosSkeleton style={{
-                marginTop: 15
-            }}/>
-        )
-    }
-    // console.log(user_likes_posts)
+    const handleLoadMore = () => {
+        // Увеличиваем номер страницы и загружаем посты
+        // setPage(prevPage => {
+        //     const newPage = prevPage + 1;
+        //     loadPosts(newPage); // Передаем новый номер страницы в loadPosts
+        //     return newPage;
+        // });
+
+
+        loadPosts();
+
+    };
+
 
     return (
         <View>
-            <MainTitle>
+            <Text style={styles.title} className={" dark:color-white color-black"} >
                 {t('Likes')}
-            </MainTitle>
+            </Text>
 
             {
-                isAuth === true && user_likes_posts.status === 'loaded' ? (
+                posts.length > 0 ? (
+                    <VirtualizedList
+                        style={{ marginTop: 15 }}
+                        data={posts}
+                        getItemCount={() => posts.length}
+                        getItem={getItem}
+                        renderItem={({ item: post }) => (
+                            <TouchableOpacity
+                                // onPress={() => navigation.navigate("FullPost", {
+                                //     id: post._id,
+                                //     likedList: post.likedBy,
+                                //     user_id_get: post.user_id
+                                // })}
+                            >
+                                <Post key={post._id} img={post.imageurl} Cardtitle={post.title} Creator={post.text} />
+                            </TouchableOpacity>
+                        )}
+                        keyExtractor={(item) => item._id}
+                        // ListFooterComponent={renderLoader}
+                        // onEndReached={loadTest}
+                        // onEndReachedThreshold={20}
 
-                    user_likes_posts.items.length === 0 ? (
-                        <>
-                            <Text style={{marginLeft: 15, fontSize: 16, marginTop: 8}}>Вы не лайкали посты</Text>
-                        </>
-                    ) : (
-
-                        <VirtualizedList
-                            style={{marginTop: 15}}
-                            data={user_likes_posts.items}
-                            getItemCount={() => user_likes_posts.items.length}
-                            getItem={getItem}
-                            renderItem={({item: post}) => (
-                                <TouchableOpacity onPress={() => navigation.navigate("FullPost", {
-                                    id: post._id,
-                                    likedList: post.likedBy,
-                                    user_id_get: post.user_id
-                                })}>
-                                    <Post key={post._id} img={post.imageUrl} Cardtitle={post.title}
-                                        /*Creator={photos.user.fullName}*/ Creator={post.text}/>
-                                </TouchableOpacity>)}
-                            keyExtractor={(item) => item._id}
-                        />
-                    )
-
-            ) : (
-                    <AccountPhotosSkeleton style={{
-                        marginTop: 15
-                    }}/>
+                    />
+                ) : (
+                    <Text style={{ marginLeft: 15, fontSize: 16, marginTop: 8 }}>Вы не cоздавали посты</Text>
                 )
             }
+            <View className={""}>
+                <Button color={currentTheme === "dark" ? 'white' : "black"} title={t('loadMore')} onPress={() => loadTest()}/>
+            </View>
+            {status === Status.LOADING && <Text>Загрузка...</Text>}
 
         </View>
     )

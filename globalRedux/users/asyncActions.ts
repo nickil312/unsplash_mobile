@@ -186,7 +186,7 @@ export const fetchCollectionsDetail = createAsyncThunk<Posts[],CollectionsDetail
 
         // console.log(params)
         const {data} = await axios.get<Posts[]>(`/postgresql/collections/${params._id}?&limit=&page=${params.page}`)
-        console.log('collections detail', data)
+        console.log('collectionsmodal detail', data)
         return data;
     })
 

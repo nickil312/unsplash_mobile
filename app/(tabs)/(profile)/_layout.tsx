@@ -43,6 +43,7 @@ export default function ProfileLayout() {
             <Stack.Screen name="users/[id]" options={{
                 title: "profile",
             }}/>
+
         </Stack>
     );
 }

@@ -10,7 +10,6 @@ import {
     View
 } from "react-native";
 
-import {AccountLikes} from "../Pages/AccountLikes";
 import {AccountCollections} from "../Pages/AccountCollections";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -20,6 +19,7 @@ import {useTranslation} from "react-i18next";
 import {AppDispatch, RootState} from "@/globalRedux/store";
 import {logout} from "@/globalRedux/users/slice";
 import AccountPhotos from "@/components/account/AccountPhotos";
+import AccountLikes from "@/components/account/AccountLikes";
 
 
 export default function ToggleSwitch() {
@@ -104,7 +104,7 @@ export default function ToggleSwitch() {
             {
                 changeThemes === "Photos" ?
                     <AccountPhotos id={"123123"}/> : changeThemes === "Likes" ?
-                        <Text>Likes</Text> : changeThemes === "Collections" ? <Text>Collections</Text> :
+                        <AccountLikes/> : changeThemes === "Collections" ? <Text>Collections</Text> :
                             <Text>Ошибка</Text>
             }
         </>)

@@ -18,6 +18,7 @@ import {Posts, Status} from "@/globalRedux/posts/types";
 import Post from "@/components/miniPost/Post";
 import {fetchPosts_Likes_coll_another_user} from "@/globalRedux/posts/asyncActions";
 import theme from "tailwindcss/defaultTheme";
+import PostCard from "@/components/miniPost/PostCard";
 
 export default function AccountPhotos ({id}: {id: string}) {
     const currentTheme = useColorScheme()
@@ -136,7 +137,7 @@ export default function AccountPhotos ({id}: {id: string}) {
                         data={posts}
                         getItemCount={() => posts.length}
                         getItem={getItem}
-                        renderItem={({ item: post }) => (
+                        renderItem={({ item }: { item: Posts }) => (
                             <TouchableOpacity
                                 // onPress={() => navigation.navigate("FullPost", {
                                 //     id: post._id,
@@ -144,7 +145,33 @@ export default function AccountPhotos ({id}: {id: string}) {
                                 //     user_id_get: post.user_id
                                 // })}
                             >
-                                <Post key={post._id} img={post.imageurl} Cardtitle={post.title} Creator={post.text} />
+                                {/*<PostCard*/}
+                                {/*    key={post._id}*/}
+                                {/*    _id={post._id}*/}
+                                {/*    fullname={post.fullname}*/}
+                                {/*    avatarurl={`${api_url}/${post.avatarurl}`}*/}
+                                {/*    user_id={post.user_id}*/}
+                                {/*    altText={post.imageurl}*/}
+                                {/*    imageUrl={`${api_url}/${post.imageurl}`}*/}
+                                {/*    lang={""}*/}
+                                {/*    likedByUser={post.likedByUser}*/}
+                                {/*    license={post.license}*/}
+                                {/*    hirevalue={post.hirevalue}*/}
+                                {/*    banned={post.banned}*/}
+                                {/*/>*/}
+                                <Post key={item._id}
+                                      imageUrl={item.imageurl}
+                                      altText={item.text}
+                                      fullname={item.fullname}
+                                      avatarurl={item.avatarurl}
+                                      user_id={item.user_id}
+                                      _id={item._id}
+                                      license={item.license}
+                                      hirevalue={item.hirevalue}
+                                      likedByUser={item.likedByUser}
+                                      banned={item.banned}
+
+                                />
                             </TouchableOpacity>
                         )}
                         keyExtractor={(item) => item._id}

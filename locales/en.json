@@ -121,6 +121,6 @@
   "WrongPassOrEmail": "Wrong password or email",
   "UserExists": "A user with this email already exists",
   "tag1tag2": "tag1, tag2",
-  "loadMore": "Tap to load more"
-
+  "loadMore": "Tap to load more",
+"collabPost": "In collaboration with "
 }

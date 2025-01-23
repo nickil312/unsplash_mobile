@@ -199,7 +199,7 @@ export const fetchAllCollectionsDatabase = createAsyncThunk<Collections[]>(
 
         // console.log(params)
         const {data} = await axios.get<Collections[]>(`/postgresql/database/collections`)
-        console.log('database all collections ', data)
+        console.log('database all collectionsmodal ', data)
         return data;
     });
 export const fetchCollectionsPostsDatabase = createAsyncThunk<CollectionPostsDatabase[]>(
@@ -208,7 +208,7 @@ export const fetchCollectionsPostsDatabase = createAsyncThunk<CollectionPostsDat
 
         // console.log(params)
         const {data} = await axios.get<CollectionPostsDatabase[]>(`/postgresql/database/collectionsposts`)
-        console.log('database  collections users', data)
+        console.log('database  collectionsmodal users', data)
         return data;
     });
 export const fetchLogsDatabase = createAsyncThunk<Logs[]>(

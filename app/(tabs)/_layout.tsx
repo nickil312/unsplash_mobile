@@ -43,11 +43,11 @@ export default function TabLayout() {
         const fetchData = async () => {
             await dispatch(fetchAuthMe());
 
-            const lang = await SecureStore.getItemAsync('language');
-            console.log(lang);
-            if (lang !== null) {
-                i18next.changeLanguage(lang);
-            }
+            // const lang = await SecureStore.getItemAsync('language');
+            // console.log(lang);
+            // if (lang !== null) {
+            //     i18next.changeLanguage(lang);
+            // }
         };
 
         fetchData();
