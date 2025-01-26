@@ -5,6 +5,7 @@ import Colors from "@/constants/Colors";
 import React from "react";
 import {useColorScheme} from "@/components/useColorScheme";
 import {useTranslation} from "react-i18next";
+import {Ionicons} from "@expo/vector-icons";
 
 export default function ProfileLayout() {
     const colorScheme = useColorScheme();
@@ -14,17 +15,13 @@ export default function ProfileLayout() {
         <Stack>
             <Stack.Screen name="index"
                           options={{
-                              title: 'Profile',
+                              title: `${t('Profile')}`,
                               headerRight: () => (
-                                  <Link href="/modal" asChild>
+                                  <Link href="/(tabs)/(profile)/settings" asChild>
                                       <Pressable>
                                           {({ pressed }) => (
-                                              <FontAwesome
-                                                  name="info-circle"
-                                                  size={25}
-                                                  color={Colors[colorScheme ?? 'light'].text}
-                                                  style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                                              />
+                                              <Ionicons name="settings-outline" style={{
+                                              }} size={24} color={colorScheme === "dark" ? 'white' : "black"}/>
                                           )}
                                       </Pressable>
                                   </Link>
@@ -38,10 +35,16 @@ export default function ProfileLayout() {
                 title: `${t('Authtorization')}`,
             }}/>
             <Stack.Screen name="details/[id]" options={{
-                title: "profile",
+                title: `${t('Photo')}`,
             }}/>
             <Stack.Screen name="users/[id]" options={{
-                title: "profile",
+                title: `${t('Profile')}`,
+            }}/>
+            <Stack.Screen name="settings" options={{
+                title: `${t('Settings')}`,
+            }}/>
+            <Stack.Screen name="profilesettings" options={{
+                title: `${t('Profile data')}`
             }}/>
 
         </Stack>

@@ -24,6 +24,8 @@ export default function AccountLikes () {
 
     const styles = StyleSheet.create({
         title: {
+            color: currentTheme === 'dark' ? 'white' : 'black',
+
             marginLeft: 15,
             flexDirection: 'row',
             alignItems: 'center',
@@ -119,7 +121,7 @@ export default function AccountLikes () {
                         data={posts}
                         getItemCount={() => posts.length}
                         getItem={getItem}
-                        renderItem={({ item: post }) => (
+                        renderItem={({ item }: { item: Posts }) => (
                             <TouchableOpacity
                                 // onPress={() => navigation.navigate("FullPost", {
                                 //     id: post._id,
@@ -127,7 +129,19 @@ export default function AccountLikes () {
                                 //     user_id_get: post.user_id
                                 // })}
                             >
-                                <Post key={post._id} img={post.imageurl} Cardtitle={post.title} Creator={post.text} />
+                                <Post key={item._id}
+                                      imageUrl={item.imageurl}
+                                      altText={item.text}
+                                      fullname={item.fullname}
+                                      avatarurl={item.avatarurl}
+                                      user_id={item.user_id}
+                                      _id={item._id}
+                                      license={item.license}
+                                      hirevalue={item.hirevalue}
+                                      likedByUser={item.likedByUser}
+                                      banned={item.banned}
+
+                                />
                             </TouchableOpacity>
                         )}
                         keyExtractor={(item) => item._id}

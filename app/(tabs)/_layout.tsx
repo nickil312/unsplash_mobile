@@ -70,21 +70,21 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="search"
                 options={{
-                    title: 'Search',
+                    title: `${t('Search')}`,
                     tabBarIcon: ({color}) => <Ionicons name="search" size={25} color={color}/>,
                 }}
             />
             <Tabs.Screen
                 name="add"
                 options={{
-                    title: 'Add',
+                    title: `${t('Add')}`,
                     tabBarIcon: ({ color }) => <Ionicons name="add-circle" size={25} color={color} />,
                 }}
             />
             <Tabs.Screen
                 name="(profile)"
                 options={{
-                    title: 'Profile',
+                    title: `${t('Profile')}`,
                     tabBarIcon: ({color}) => <Ionicons name="person-circle-outline" size={25} color={color}/>,
                 }}
             />

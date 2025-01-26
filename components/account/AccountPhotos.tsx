@@ -37,7 +37,9 @@ export default function AccountPhotos ({id}: {id: string}) {
 
     const styles = StyleSheet.create({
         title: {
-            marginLeft: 15,
+            color: currentTheme === 'dark' ? 'white' : 'black',
+
+        marginLeft: 15,
             flexDirection: 'row',
             alignItems: 'center',
             fontSize: 20,

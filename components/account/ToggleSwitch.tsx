@@ -10,7 +10,7 @@ import {
     View
 } from "react-native";
 
-import {AccountCollections} from "../Pages/AccountCollections";
+import {AccountCollections} from "../account/AccountCollections";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -104,7 +104,7 @@ export default function ToggleSwitch() {
             {
                 changeThemes === "Photos" ?
                     <AccountPhotos id={"123123"}/> : changeThemes === "Likes" ?
-                        <AccountLikes/> : changeThemes === "Collections" ? <Text>Collections</Text> :
+                        <AccountLikes/> : changeThemes === "Collections" ? <AccountCollections/> :
                             <Text>Ошибка</Text>
             }
         </>)

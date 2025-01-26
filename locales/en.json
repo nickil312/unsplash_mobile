@@ -8,6 +8,7 @@
   "Home": "Home",
   "Photo": "Photo",
   "Photos": "Photos",
+  "photos": "photos",
   "Downloading": "Downloading",
   "Browse by Category": "Browse by Category",
   "Discover": "Discover",
@@ -122,5 +123,10 @@
   "UserExists": "A user with this email already exists",
   "tag1tag2": "tag1, tag2",
   "loadMore": "Tap to load more",
-"collabPost": "In collaboration with "
+"collabPost": "In collaboration with ",
+  "Bio": "Bio",
+  "Location": "Location",
+  "Messaging": "Messaging",
+  "Profile": "Profile",
+  "deleted": "Deleted"
 }

@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next";
 import {Link} from "expo-router";
 import {AntDesign, FontAwesome} from "@expo/vector-icons";
 import LikeDisChange from "@/components/func/LikeDisChange";
+import {DownloadImage} from "@/components/func/DownloadImage";
 //
 // const Card = styled.View`
 //
@@ -185,8 +186,11 @@ export default function Post({
             </Link>
 
             <View style={styles.card}>
+                <Link  href={`/(tabs)/(profile)/details/${_id}`}>
+
                 <Image
                     source={{uri: `${api_url}/${imageUrl}`}} style={styles.cardImage}/>
+                </Link>
 
                 <View style={styles.banned}>
                     {
@@ -207,7 +211,7 @@ export default function Post({
 
                 </View>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center',justifyContent: 'space-between',padding: 4}}>
+            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 4}}>
 
 
                 <View style={{flexDirection: 'row', alignItems: 'flex-start', gap: 4}}>
@@ -239,11 +243,28 @@ export default function Post({
                     </Link>
 
                 </View>
-                {/*<View style={{flexDirection: 'row', alignItems: 'center',backgroundColor: 'black'}}>*/}
-                {/*    <FontAwesome name="lock" size={24} color="white"/>*/}
-                {/*    <Text style={{color:"white"}}>Download</Text>*/}
+                <TouchableOpacity onPress={() => DownloadImage(imageUrl,altText,_id,api_url)}>
 
-                {/*</View>*/}
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        backgroundColor: 'black',
+                        padding: 4,
+                        borderRadius: 4,
+                        gap: 4
+                    }}>
+                        {
+                            license === "Unsplash+" ? (
+                                <FontAwesome name="lock" size={14} color="white"/>
+
+                            ) : (
+                                <></>
+                            )
+                        }
+                        <Text style={{color: "white"}}>Download</Text>
+
+                    </View>
+                </TouchableOpacity>
             </View>
         </View>
 
