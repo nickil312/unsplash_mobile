@@ -234,9 +234,9 @@ export default function Profilesettings (){
                     <Text style={styles.label}>{t('Messaging')}</Text>
                     <Switch
                         style={{marginTop:20}}
-                        trackColor={{false: '#767577', true: '#d2d2d2'}}
-                        thumbColor={isEnabled ? 'rgba(37,36,36,0.81)' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
+                        // trackColor={{false: '#767577', true: '#d2d2d2'}}
+                        // thumbColor={isEnabled ? 'rgba(37,36,36,0.81)' : '#f4f3f4'}
+                        // ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
                     />
