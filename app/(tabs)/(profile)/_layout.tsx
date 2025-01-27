@@ -49,6 +49,9 @@ export default function ProfileLayout() {
             <Stack.Screen name="hire" options={{
                 title: `${t('Hiring')}`
             }}/>
+            <Stack.Screen name="downloadHistory" options={{
+                title: `${t('DownloadHistory')}`
+            }}/>
 
         </Stack>
     );

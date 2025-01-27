@@ -221,15 +221,15 @@ export default function Post({
                             {/*// лайк стоит*/}
                             {/*    onPress={ChangeLike}*/}
                             <View className={"color-red-500 mt-4 w-fit"} style={styles.likeBut}>
-                                <AntDesign name="like1" size={30} color="black"/>
+                                <AntDesign name="like1" size={30} color={currentTheme === "dark" ? 'white' : 'black'}/>
                             </View>
 
                         </TouchableOpacity>
                     ) : (
                         <TouchableOpacity onPress={ChangeLike}>
 
-                            <View className={"color-red-500 mt-4"} style={styles.likeBut} onPress={ChangeLike}>
-                                <AntDesign name="like2" size={30} color="black"/>
+                            <View className={"color-red-500 mt-4"} style={styles.likeBut} >
+                                <AntDesign name="like2" size={30} color={currentTheme === "dark" ? 'white' : 'black'}/>
                             </View>
                         </TouchableOpacity>
 
@@ -237,7 +237,7 @@ export default function Post({
                     <Link href={`/collectionsmodal/${_id}`}>
                         {/*href={`/(tabs)/(profile)/users/${user_id}`}*/}
                         <View className={"color-red-500 mt-4 w-fit"} style={styles.likeBut}>
-                            <AntDesign name="plus" size={30} color="black"/>
+                            <AntDesign name="plus" size={30} color={currentTheme === "dark" ? 'white' : 'black'}/>
 
                         </View>
                     </Link>

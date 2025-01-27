@@ -229,9 +229,9 @@ export default function Settings(){
                                         <Link href="/(tabs)/(profile)/hire" style={styles.editProfileText}  >
                                             {t("Hiring")}
                                         </Link>
-                                        <Text style={styles.editProfileText}  >
+                                        <Link href="/(tabs)/(profile)/downloadHistory" style={styles.editProfileText}  >
                                             {t("DownloadHistory")}
-                                        </Text>
+                                        </Link>
                                         <Text style={styles.editProfileText}  >
                                             {t("Change Password")}
                                         </Text>
