@@ -291,7 +291,7 @@ export default function TabOneScreen() {
                                     </View>
                                     {
 
-                                        data.cities !== null ? (
+                                        data.hirevalue && data.cities !== null ? (
                                             <View style={styles.dataCitiesWork}>
 
                                                 <Text className={"ml-4 dark:color-white color-black"}>
@@ -310,7 +310,7 @@ export default function TabOneScreen() {
                                     }
                                     {
 
-                                        data.work !== null ? (
+                                        data.hirevalue && data.work !== null ? (
                                             <View style={styles.dataCitiesWork}>
 
                                                 <Text className={"ml-4 dark:color-white color-black"}>
