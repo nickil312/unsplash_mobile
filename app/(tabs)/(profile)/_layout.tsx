@@ -52,6 +52,14 @@ export default function ProfileLayout() {
             <Stack.Screen name="downloadHistory" options={{
                 title: `${t('DownloadHistory')}`
             }}/>
+            <Stack.Screen name="collectionsmodal/[id]" options={{
+                title: `${t('Collections')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="addtocollection/[id]" options={{
+                title: `${t('Collections')}`,
+                // presentation: "modal"
+            }}/>
 
         </Stack>
     );

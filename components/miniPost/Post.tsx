@@ -234,7 +234,11 @@ export default function Post({
                         </TouchableOpacity>
 
                     )}
-                    <Link href={`/collectionsmodal/${_id}`}>
+                    {/*`/addtocollection/${_id}`*/}
+                    <Link href={{
+                        pathname: '/addtocollection/[id]',
+                        params: {id:_id,imageUrl:imageUrl}
+                    }} >
                         {/*href={`/(tabs)/(profile)/users/${user_id}`}*/}
                         <View className={"color-red-500 mt-4 w-fit"} style={styles.likeBut}>
                             <AntDesign name="plus" size={30} color={currentTheme === "dark" ? 'white' : 'black'}/>
@@ -261,7 +265,7 @@ export default function Post({
                                 <></>
                             )
                         }
-                        <Text style={{color: "white"}}>Download</Text>
+                        <Text style={{color: "white"}}>{t('Download')}</Text>
 
                     </View>
                 </TouchableOpacity>

@@ -356,7 +356,7 @@ export default function PostDetail() {
                         // style={{marginTop: 5}}
                         //       color={currentTheme === "dark" ? 'white' : "black"}
                     >{t('Likes')}: {items.likecount}</Text>
-                    <Link href={`/(tabs)/(profile)/details/${items.user_id}`} style={{marginTop:5}}>
+                    <Link href={`/(tabs)/(profile)/users/${items.user_id}`} style={{marginTop:5}}>
 
                         <View
                             // onTouchEndCapture={() => navigation.navigate("AccountView", {user_id: user_data_get._id})}

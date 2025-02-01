@@ -373,6 +373,7 @@ const PostCard: React.FC<PhotoCardProps> = ({
 
             </View>
         </View>
+
         </>
 
     );

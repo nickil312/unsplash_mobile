@@ -178,7 +178,8 @@ export const AccountCollections = () => {
                                     //     user_id_get: post.user_id
                                     // })}
                                 >
-                                        <Link href={`/collectionsmodal/${item._id}`}>
+                                        {/*href={`/(tabs)/(profile)/collectionsmodal/${item._id}`}*/}
+                                        <Link href={`/(tabs)/(profile)/collectionsmodal/${item._id}`}>
                                     <View style={styles.container}>
                                             <View style={styles.photosContainer}>
                                                 {item.last_three_posts !== null && item.last_three_posts.length > 0 ? (

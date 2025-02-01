@@ -137,5 +137,20 @@
   "HiringCitiesTitle": "In which cities are you available to shoot?",
   "HiringCitiesHint": "Hiring opportunities are limited to these cities for the moment.",
   "HiringTitle": "Yes, feature my Unsplash profile on hiring pages and display a 'Hire' button",
-  "Statistics": "Statistics"
+  "Statistics": "Statistics",
+  "images": "images",
+  "Name": "Name",
+  "Private": "Make collection private",
+  "Recovered collection": "Recovered collection",
+  "Deleted collection": "Deleted collection",
+  "Recover collection": "Recover collection",
+  "Please enter a valid name": "Please enter a valid name",
+  "Description cannot contain more than 5 line breaks.": "Description cannot contain more than 5 line breaks.",
+  "Description cannot exceed 250 characters.": "Description cannot exceed 250 characters.",
+  "Edit Collection": "Edit collection",
+  "Create Collection": "Create collection",
+  "Create new collection": "Create new collection",
+  "Add to collection": "Add to collection",
+  "Create a new collection": "Create a new collection",
+  "Download": "Download"
 }
