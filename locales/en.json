@@ -152,5 +152,9 @@
   "Create new collection": "Create new collection",
   "Add to collection": "Add to collection",
   "Create a new collection": "Create a new collection",
-  "Download": "Download"
+  "Download": "Download",
+  "Current Password": "Current Password",
+  "New Password": "New Password",
+  "Confirm Delete": "Are you sure you want to delete this post?",
+  "Confirm": "Confirm"
 }

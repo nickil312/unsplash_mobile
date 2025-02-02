@@ -232,9 +232,9 @@ export default function Settings(){
                                         <Link href="/(tabs)/(profile)/downloadHistory" style={styles.editProfileText}  >
                                             {t("DownloadHistory")}
                                         </Link>
-                                        <Text style={styles.editProfileText}  >
+                                        <Link href="/(tabs)/(profile)/changepassword" style={styles.editProfileText}  >
                                             {t("Change Password")}
-                                        </Text>
+                                        </Link>
 
 
                                         <Text style={styles.editProfileText}>

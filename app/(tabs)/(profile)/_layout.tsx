@@ -6,6 +6,7 @@ import React from "react";
 import {useColorScheme} from "@/components/useColorScheme";
 import {useTranslation} from "react-i18next";
 import {Ionicons} from "@expo/vector-icons";
+import changePassword from "@/app/(tabs)/(profile)/changepassword";
 
 export default function ProfileLayout() {
     const colorScheme = useColorScheme();
@@ -58,6 +59,14 @@ export default function ProfileLayout() {
             }}/>
             <Stack.Screen name="addtocollection/[id]" options={{
                 title: `${t('Collections')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="changePassword" options={{
+                title: `${t('Change Password')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="details/statistics/[id]" options={{
+                title: `${t('Photo')}`,
                 // presentation: "modal"
             }}/>
 

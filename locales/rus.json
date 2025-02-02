@@ -160,5 +160,9 @@
   "Create new collection": "Создать новую коллекцию",
   "Add to collection": "Добавить в коллекцию",
   "Create a new collection": "Создать новую коллекцию",
-  "Download": "Скачать"
+  "Download": "Скачать",
+  "Current Password": "Текущей пароль",
+  "New Password": "Новый пароль",
+  "Confirm Delete": "Вы уверены, что хотите удалить этот пост?",
+  "Confirm": "Подтверждение"
 }

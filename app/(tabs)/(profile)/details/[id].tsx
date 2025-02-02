@@ -7,14 +7,14 @@ import {
     RefreshControl,
     View,
     Image,
-    Button, TouchableOpacity
+    Button, TouchableOpacity, Alert
 } from "react-native";
-import {Link, useLocalSearchParams} from "expo-router";
+import {Link, useLocalSearchParams, useRouter} from "expo-router";
 import React, {useCallback, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {AppDispatch, RootState} from "@/globalRedux/store";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchOnePost} from "@/globalRedux/posts/asyncActions";
+import {fetchDeletePost, fetchOnePost} from "@/globalRedux/posts/asyncActions";
 import {AntDesign, Feather, Ionicons} from "@expo/vector-icons";
 import {DownloadImage} from "@/components/func/DownloadImage";
 import i18next from "@/i18n";
@@ -32,6 +32,7 @@ export default function PostDetail() {
     const dispatch = useDispatch<AppDispatch>();
     const [liked, setLiked] = useState(false);
     const [imageDimensions, setImageDimensions] = useState({width: 0, height: 0}); // Состояние для хранения ширины и высоты изображения
+    const router = useRouter();
 
     const styles = StyleSheet.create({
         postText: {
@@ -258,16 +259,45 @@ export default function PostDetail() {
                                     <View style={styles.button}
                                         // onTouchEndCapture={() => DeletePost()}
                                     >
-                                        <Button title={t('Delete')} color="red"/>
+                                        <Button title={t('Delete')} onPress={() => {
+                                            const confirmMessage = t('Confirm Delete');
+
+                                            Alert.alert(
+                                                t('Подтверждение'),
+                                                confirmMessage, // Сообщение
+                                                [
+                                                    {
+                                                        text: t('Cancel'),
+                                                        style: "cancel"
+                                                    },
+                                                    {
+                                                        text: "OK" ,
+                                                        onPress: () => {
+                                                            const params = {
+                                                                _id: id
+                                                            };
+                                                            dispatch(fetchDeletePost(params));
+                                                            // router.push(`/${lang}`);
+                                                        }
+                                                    }
+                                                ],
+                                                { cancelable: false } // Не позволяет закрыть окно, нажав вне его
+                                            );
+                                        }} color="red"/>
                                     </View>
 
                                 </View>
                                 {/*<View style={styles.view}>*/}
+                                {/*    <Link href={`/(tabs)/(profile)/details/statistics/${id}`}>*/}
                                 <View style={styles.ban_button}
                                     // onTouchEndCapture={() => navigation.navigate('BanPost', {id: id})}
                                 >
-                                    <Button title={t('Statistics')} color="black"/>
+
+                                    <Button onPress={() => {
+                                        router.push(`/(tabs)/(profile)/details/statistics/${id}`)
+                                    }} title={t('Statistics')} color="black"/>
                                 </View>
+                                    {/*</Link>*/}
                                 {/*</View>*/}
                             </>
                         ) : (
@@ -343,8 +373,10 @@ export default function PostDetail() {
                                   size={36}
                                   color={currentTheme === "dark" ? 'white' : "black"}/>
                         <View style={styles.item}>
-
-                            <Link href={`/collectionsmodal/${items._id}`}>
+                            <Link href={{
+                                pathname: '/addtocollection/[id]',
+                                params: {id:items._id,imageUrl:items.imageurl}
+                            }} >
 
                                 <Feather name="plus" size={36}
                                          color={currentTheme === "dark" ? 'white' : "black"}/>

@@ -361,12 +361,12 @@ export default function TabOneScreen() {
 
 
                         ) : (
-                            // <View>
-                            //
-                            // <Text>нет инетп(сервера)</Text>
-                            // <Text>{api_url}</Text>
-                            // </View>
-                            <Redirect href="/(tabs)/(profile)/login"/>
+                            <View>
+
+                            <Text>нет инетп(сервера)</Text>
+                            {/*<Text>{api_url}</Text>*/}
+                            </View>
+                            // <Redirect href="/(tabs)/(profile)/login"/>
                             // <Regist navigation={navigation}/>
                         )
                     )
