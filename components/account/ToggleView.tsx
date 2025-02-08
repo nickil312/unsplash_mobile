@@ -1,48 +1,25 @@
-import {
-    Button,
-    Pressable,
-    SectionList,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    useColorScheme,
-    View
-} from "react-native";
-
-import {AccountCollections} from "../account/AccountCollections";
-import {useEffect, useState} from "react";
+import {Button, ScrollView, StyleSheet, Text, useColorScheme, View} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
-
-import * as SecureStore from "expo-secure-store";
-import {useTranslation} from "react-i18next";
 import {AppDispatch, RootState} from "@/globalRedux/store";
-import {logout} from "@/globalRedux/users/slice";
+import {useState} from "react";
+import {useTranslation} from "react-i18next";
 import AccountPhotos from "@/components/account/AccountPhotos";
 import AccountLikes from "@/components/account/AccountLikes";
+import {AccountCollections} from "@/components/account/AccountCollections";
+import {useLocalSearchParams} from "expo-router";
+import AccountPhotosView from "@/components/account/anotherUserProf/AccountPhotosView";
+import AccountLikesView from "@/components/account/anotherUserProf/AccountLikesView";
+import {AccountCollectionsView} from "@/components/account/anotherUserProf/AccountCollectionsView";
 
+export default function ToggleView(){
+    const { id } = useLocalSearchParams();
 
-export default function ToggleSwitch() {
-    const {api_url, data} = useSelector((state: RootState) => state.users);
-
-    const [userLogIn, setUserLogIn] = useState(false)
-    useEffect(() => {
-        if (data !== null) {
-            setUserLogIn(true)
-        }
-    }, [data])
-    const {t} = useTranslation();
-
+    const {items, status} = useSelector((state: RootState) => state.posts.posts_another_user);
     const dispatch = useDispatch<AppDispatch>();
     const currentTheme = useColorScheme()
     const [changeThemes, setChangeThemes] = useState("Photos")
-
-
-    const OnClickLogout = async () => {
-        dispatch(logout());
-        await SecureStore.deleteItemAsync('token')
-    }
-
+    const {t} = useTranslation();
+    console.log("toggle view id ",id)
     const styles = StyleSheet.create({
         container: {
             flexDirection: 'row',
@@ -68,7 +45,8 @@ export default function ToggleSwitch() {
         }
     });
 
-    return (
+
+    return(
         <>
             <View className="flex flex-row items-center justify-between w-full  ">
                 <View style={styles.container}>
@@ -95,19 +73,14 @@ export default function ToggleSwitch() {
                     </View>
                 </View>
             </View>
-            <View className={"color-red-500 mt-4"} style={styles.exit}>
-
-                    <Button color="red" title={t('Logout')} onPress={() => OnClickLogout()}/>
-
-            </View>
-
+            <View style={{marginTop:10}}></View>
             {
                 changeThemes === "Photos" ?
-                    <AccountPhotos/> : changeThemes === "Likes" ?
-                        <AccountLikes/> : changeThemes === "Collections" ? <AccountCollections/> :
+                    <AccountPhotosView/> : changeThemes === "Likes" ?
+                        <AccountLikesView/> : changeThemes === "Collections" ? <AccountCollectionsView/> :
                             <Text>Ошибка</Text>
             }
-        </>)
-
+            {/*<Text>сделать отдельные компоненты для фото лайки и коллекции</Text>*/}
+        </>
+    )
 }
-

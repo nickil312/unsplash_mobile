@@ -19,6 +19,7 @@ export default function HomeLayout() {
         <Stack>
             <Stack.Screen name="index"
                           options={{
+
                               title: `${t('Home')}`,
                               headerRight: () => (
                                   <Link href="/modal" asChild>

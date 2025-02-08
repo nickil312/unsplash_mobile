@@ -171,8 +171,9 @@ export default function TabOneScreen() {
             backgroundColor: currentTheme === 'dark' ? 'black' : '#F2F2F2',
             width: "60%",
             padding: 4,
-            paddingLeft: 8,
-            gap: 4
+            paddingLeft: 16,
+            gap: 4,
+            top:15
         },
         data: {
             backgroundColor: currentTheme === 'dark' ? 'black' : '#F2F2F2',

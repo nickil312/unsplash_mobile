@@ -38,7 +38,7 @@ export const fetchAllPosts = createAsyncThunk<Posts[], SearchAndSortParams>(
         console.log('all users params',params)
 
         const {data} = await axios.get<Posts[]>(`/postgresql/posts/?page=${page}&role_id=0&searchtext=&posttype=${posttype}&category=&sort=${sort}&license=${license}&orientation=${orientation}&limit=${limit}&search=false`)
-    console.log('all users', data)
+    // console.log('all users', data)
     return data;
 })
 export const fetchAllPostsWithSearch = createAsyncThunk<Posts[], SearchAndSortParams>(

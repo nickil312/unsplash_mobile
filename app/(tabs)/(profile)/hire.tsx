@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import {AppDispatch} from "@/globalRedux/store";
 import {fetchChangeHireData, fetchGetHireData} from "@/globalRedux/users/asyncActions";
 import i18next from "@/i18n";
+import {useColorScheme} from "@/components/useColorScheme";
 
 export default function Hire() {
     const [selectedWork, setSelectedWork] = useState<string[]>([]);
@@ -13,6 +14,7 @@ export default function Hire() {
     const {t} = useTranslation();
     const dispatch = useDispatch<AppDispatch>();
     const [hireValue, setHireValue] = useState<boolean>(false);
+    const currentTheme = useColorScheme();
 
     const handleSwitchChange = (cityId: string) => {
         setSelectedWork((prevSelected) => {
@@ -82,6 +84,12 @@ export default function Hire() {
             fontSize: 18,
             fontWeight: 'bold',
             marginBottom: 8,
+            color: currentTheme === 'dark' ? 'white' : 'black',
+
+},
+        switchText:{
+            color: currentTheme === 'dark' ? 'white' : 'black',
+
         },
         subtitle: {
             color: '#76A',
@@ -166,7 +174,7 @@ export default function Hire() {
                                 onValueChange={() => handleSwitchChange(city.id)}
                                 style={styles.switch}
                             />
-                            <Text>
+                            <Text style={styles.switchText}>
                                 {i18next.language === 'en' ? city.label.en : city.label.ru}
                             </Text>
                         </View>
@@ -186,7 +194,7 @@ export default function Hire() {
                                 onValueChange={() => handleSwitchChangeCities(city.id)}
                                 style={styles.switch}
                             />
-                            <Text>
+                            <Text style={styles.switchText}>
                                 {i18next.language === 'en' ? city.label.en : city.label.ru}
                             </Text>
                         </View>

@@ -31,9 +31,29 @@ export default function ProfileLayout() {
             />
             <Stack.Screen name="register" options={{
                 title: 'Register',
+                headerRight: () => (
+                    <Link href="/(tabs)/(profile)/settings" asChild>
+                        <Pressable>
+                            {({ pressed }) => (
+                                <Ionicons name="settings-outline" style={{
+                                }} size={24} color={colorScheme === "dark" ? 'white' : "black"}/>
+                            )}
+                        </Pressable>
+                    </Link>
+                )
             }}/>
             <Stack.Screen name="login" options={{
                 title: `${t('Authtorization')}`,
+                headerRight: () => (
+                    <Link href="/(tabs)/(profile)/settings" asChild>
+                        <Pressable>
+                            {({ pressed }) => (
+                                <Ionicons name="settings-outline" style={{
+                                }} size={24} color={colorScheme === "dark" ? 'white' : "black"}/>
+                            )}
+                        </Pressable>
+                    </Link>
+                )
             }}/>
             <Stack.Screen name="details/[id]" options={{
                 title: `${t('Photo')}`,
@@ -61,7 +81,7 @@ export default function ProfileLayout() {
                 title: `${t('Collections')}`,
                 // presentation: "modal"
             }}/>
-            <Stack.Screen name="changePassword" options={{
+            <Stack.Screen name="changepassword" options={{
                 title: `${t('Change Password')}`,
                 // presentation: "modal"
             }}/>

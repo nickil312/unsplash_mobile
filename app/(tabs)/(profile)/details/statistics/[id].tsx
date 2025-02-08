@@ -132,7 +132,7 @@ export default function Statistics() {
                         items.views.map((item) => (
 
                             <View style={{
-                                height: item.likecount * 10, width: 69, backgroundColor: currentTheme === "dark" ? 'green' : 'lightgreen', marginLeft: 10,paddingLeft:4,paddingRight:4,paddingTop:4,borderRadius:6
+                                height: item.likecount * 40, width: 69, backgroundColor: currentTheme === "dark" ? 'green' : 'lightgreen', marginLeft: 10,paddingLeft:4,paddingRight:4,paddingTop:4,borderRadius:6
                             }}>
                                 <Text style={{
                                     color:currentTheme === "dark" ? 'white' : 'black'

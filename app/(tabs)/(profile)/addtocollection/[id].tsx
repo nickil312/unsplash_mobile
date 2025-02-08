@@ -104,6 +104,7 @@ export default function AddToCollection() {
             width: '100%',
             height: 80,
             borderRadius: 6,
+            filter: 'brightness(70%)',
         }
 
     });

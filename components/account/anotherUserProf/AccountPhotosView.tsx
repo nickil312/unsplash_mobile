@@ -18,12 +18,12 @@ import {Posts, Status} from "@/globalRedux/posts/types";
 import Post from "@/components/miniPost/Post";
 import {fetchPosts_Likes_coll_another_user} from "@/globalRedux/posts/asyncActions";
 import theme from "tailwindcss/defaultTheme";
-import PostCard from "@/components/miniPost/PostCard";
+import {useLocalSearchParams} from "expo-router";
 
-export default function AccountPhotos () {
+export default function AccountPhotosView() {
     const currentTheme = useColorScheme()
-    const {api_url, data} = useSelector((state: RootState) => state.users);
     const {items, status} = useSelector((state: RootState) => state.posts.posts_another_user);
+    const {id} = useLocalSearchParams();
 
     const dispatch = useDispatch<AppDispatch>();
     const navigation = useNavigation()
@@ -39,7 +39,7 @@ export default function AccountPhotos () {
         title: {
             color: currentTheme === 'dark' ? 'white' : 'black',
 
-        marginLeft: 15,
+            marginLeft: 15,
             flexDirection: 'row',
             alignItems: 'center',
             fontSize: 20,
@@ -48,60 +48,58 @@ export default function AccountPhotos () {
         },
     })
     useEffect(() => {
-        if (data !== null) {
-            loadPosts();
-        }
+        loadPosts();
+
     }, [page]);
 
     const loadTest = () => {
         console.log("liadinnaoinosjdflkdsf")
-        setPage(page+ 1);
+        setPage(page + 1);
 
     }
     const loadPosts = async () => {
-        if (data !== null ) { // Проверяем, что не идет загрузка
 
-            console.log("currentPage",page)
+        console.log("currentPage", page)
         const posts_data = await dispatch(fetchPosts_Likes_coll_another_user({
             bdType: "photos",
-            page:page,
-            userIdAccViewed: data._id
+            page: page,
+            userIdAccViewed: id
         }));
-            if (posts_data.meta.requestStatus === 'fulfilled') {
-                // Получаем посты из payload
-                const newPosts: Posts[] = posts_data.payload.posts;
+        if (posts_data.meta.requestStatus === 'fulfilled') {
+            // Получаем посты из payload
+            const newPosts: Posts[] = posts_data.payload.posts;
 
 
-                if (newPosts) {
-                    // Фильтруем новые посты, чтобы избежать дубликатов по id
-                    const uniquePosts = newPosts.filter((newPost: Posts) =>
-                        !posts.some(existingPost => existingPost._id === newPost._id)
-                    );
+            if (newPosts) {
+                // Фильтруем новые посты, чтобы избежать дубликатов по id
+                const uniquePosts = newPosts.filter((newPost: Posts) =>
+                    !posts.some(existingPost => existingPost._id === newPost._id)
+                );
 
-                    // Если есть уникальные посты, добавляем их и увеличиваем страницу
-                    if (uniquePosts.length > 0) {
-                        setPosts(prevPosts => [...prevPosts, ...uniquePosts]);
-                        // setPage(prevPage => prevPage + 1);
+                // Если есть уникальные посты, добавляем их и увеличиваем страницу
+                if (uniquePosts.length > 0) {
+                    setPosts(prevPosts => [...prevPosts, ...uniquePosts]);
+                    // setPage(prevPage => prevPage + 1);
 
-                    } else {
-                        // Если уникальных постов нет, увеличиваем номер страницы
-                        // setPage(prevPage => prevPage + 1);
-                    }
+                } else {
+                    // Если уникальных постов нет, увеличиваем номер страницы
+                    // setPage(prevPage => prevPage + 1);
                 }
+            }
 
-                // // Обновляем состояние posts
-                // if (newPosts) {
-                //     // Фильтруем новые посты, чтобы избежать дубликатов по id
-                //     const uniquePosts = newPosts.filter((newPost:Posts) =>
-                //         !posts.some(existingPost => existingPost._id === newPost._id)
-                //     );
-                //
-                //     // Обновляем состояние posts, добавляя только уникальные посты
-                //     setPosts(prevPosts => [...prevPosts, ...uniquePosts]);
-                // }
-                }
-
+            // // Обновляем состояние posts
+            // if (newPosts) {
+            //     // Фильтруем новые посты, чтобы избежать дубликатов по id
+            //     const uniquePosts = newPosts.filter((newPost:Posts) =>
+            //         !posts.some(existingPost => existingPost._id === newPost._id)
+            //     );
+            //
+            //     // Обновляем состояние posts, добавляя только уникальные посты
+            //     setPosts(prevPosts => [...prevPosts, ...uniquePosts]);
+            // }
         }
+
+
     };
 
     const getItem = (data, index) => {
@@ -116,30 +114,30 @@ export default function AccountPhotos () {
         // });
 
 
-            loadPosts();
+        loadPosts();
 
     };
-    const renderLoader = () =>{
-        return(
+    const renderLoader = () => {
+        return (
             <View>
-                <ActivityIndicator size="large" color="#767676" />
+                <ActivityIndicator size="large" color="#767676"/>
             </View>
         )
 
     }
     return (
         <View>
-            <Text style={styles.title} className={" dark:color-white color-black"} >
+            <Text style={styles.title} className={" dark:color-white color-black"}>
                 {t('Photos')}
             </Text>
             {
                 posts.length > 0 ? (
                     <VirtualizedList
-                        style={{ marginTop: 15 }}
+                        style={{marginTop: 15}}
                         data={posts}
                         getItemCount={() => posts.length}
                         getItem={getItem}
-                        renderItem={({ item }: { item: Posts }) => (
+                        renderItem={({item}: { item: Posts }) => (
                             <TouchableOpacity
                                 // onPress={() => navigation.navigate("FullPost", {
                                 //     id: post._id,
@@ -183,11 +181,12 @@ export default function AccountPhotos () {
 
                     />
                 ) : (
-                    <Text style={{ marginLeft: 15, fontSize: 16, marginTop: 8 }}>Вы не cоздавали посты</Text>
+                    <Text style={{marginLeft: 15, fontSize: 16, marginTop: 8}}>Вы не cоздавали посты</Text>
                 )
             }
             <View className={""}>
-                <Button color={currentTheme === "dark" ? 'white' : "black"} title={t('loadMore')} onPress={() => loadTest()}/>
+                <Button color={currentTheme === "dark" ? 'white' : "black"} title={t('loadMore')}
+                        onPress={() => loadTest()}/>
             </View>
             {status === Status.LOADING && <Text>Загрузка...</Text>}
             {/*{*/}

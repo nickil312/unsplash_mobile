@@ -54,9 +54,15 @@ export default function DownloadHistory() {
                                         marginLeft: 10
                                     }}>
 
-                                        <Text>{item.title}</Text>
-                                        <Text>{truncateText(`${item.text}`, 29)}</Text>
-                                        <Text>{new Intl.DateTimeFormat(`${i18next.language}`, {
+                                        <Text style={{
+                                            color: currentTheme === 'dark' ? 'white' : 'black',
+                                        }}>{item.title}</Text>
+                                        <Text style={{
+                                            color: currentTheme === 'dark' ? 'white' : 'black',
+                                        }}>{truncateText(`${item.text}`, 29)}</Text>
+                                        <Text style={{
+                                            color: currentTheme === 'dark' ? 'white' : 'black',
+                                        }}>{new Intl.DateTimeFormat(`${i18next.language}`, {
                                             year: 'numeric',
                                             month: 'long',
                                             day: 'numeric'
