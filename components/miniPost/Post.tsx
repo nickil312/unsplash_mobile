@@ -157,7 +157,7 @@ export default function Post({
     return (
         <View>
             {/*style={styles.postDetails}*/}
-            <Link href={`/(tabs)/(profile)/users/${user_id}`}>
+            <Link href={`/users/${user_id}`}>
 
 
                 <View style={styles.container}>
@@ -186,7 +186,7 @@ export default function Post({
             </Link>
 
             <View style={styles.card}>
-                <Link  href={`/(tabs)/(profile)/details/${_id}`}>
+                <Link  href={`/details/${_id}`}>
 
                 <Image
                     source={{uri: `${api_url}/${imageUrl}`}} style={styles.cardImage}/>

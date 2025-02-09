@@ -41,6 +41,17 @@ export default function HomeLayout() {
             <Stack.Screen name="details/[id]" options={{
                 title: `${t('Photo')}`,
             }}/>
+            <Stack.Screen name="users/[id]" options={{
+                title: `${t('Profile')}`,
+            }}/>
+            <Stack.Screen name="addtocollection/[id]" options={{
+                title: `${t('Collections')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="details/statistics/[id]" options={{
+                title: `${t('Photo')}`,
+                // presentation: "modal"
+            }}/>
         </Stack>
     );
 }

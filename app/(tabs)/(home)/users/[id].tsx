@@ -90,7 +90,7 @@ export default function PostDetail(){
                                     {
 
                                         ((items.location !== null) && items.location) && (
-                                            <View className={"ml-4 mt-4"}
+                                            <View className={"ml-4 mt-4 "}
                                                   style={styles.data}>
                                                 <Text style={styles.textChangeColor}>
                                                     {items.location}
@@ -166,7 +166,7 @@ export default function PostDetail(){
                                 ((items.bio !== null) && items.bio) && (
                                     <View style={styles.dataCitiesWork}>
 
-                                        <View className={"ml-4 mt-4 "}
+                                        <View  className={"ml-4 mt-4 "}
                                               style={styles.data}>
                                             <Text style={styles.textChangeColor}>
                                                 {

@@ -294,7 +294,7 @@ export default function PostDetail() {
                                 >
 
                                     <Button onPress={() => {
-                                        router.push(`/(tabs)/(profile)/details/statistics/${id}`)
+                                        router.push(`/details/statistics/${id}`)
                                     }} title={t('Statistics')} color="black"/>
                                 </View>
                                     {/*</Link>*/}
@@ -388,7 +388,7 @@ export default function PostDetail() {
                         // style={{marginTop: 5}}
                         //       color={currentTheme === "dark" ? 'white' : "black"}
                     >{t('Likes')}: {items.likecount}</Text>
-                    <Link href={`/(tabs)/(profile)/users/${items.user_id}`} style={{marginTop:5}}>
+                    <Link href={`/users/${items.user_id}`} style={{marginTop:5}}>
 
                         <View
                             // onTouchEndCapture={() => navigation.navigate("AccountView", {user_id: user_data_get._id})}
