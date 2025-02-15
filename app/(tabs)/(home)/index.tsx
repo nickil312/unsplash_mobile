@@ -29,7 +29,7 @@ import {AntDesign, MaterialCommunityIcons, Octicons} from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 
-const local_data = [
+export const local_data = [
     {
         value: '1',
         lable: 'Country 1',
@@ -66,7 +66,7 @@ const local_data = [
         },
     },
 ];
-const countview = [
+export const countview = [
     {
         label: {
             en: 'Show 9',
@@ -99,7 +99,7 @@ const countview = [
         lable: '36',
         name: "countview", value: '4', value1: "36"
     }]
-const license = [
+export const license = [
 
     {
         label: 'All',
@@ -117,7 +117,7 @@ const license = [
         name: "license", value: "3", value1: "free"
     },
 ]
-const orientation = [
+export const orientation = [
     {
         label: 'All',
         labelru: 'Все',
@@ -137,7 +137,7 @@ const orientation = [
         path: "M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14z",
     },
 ]
-const sort= [
+export const sort= [
     {
         label: 'Newest',
         labelru: 'Новым',
