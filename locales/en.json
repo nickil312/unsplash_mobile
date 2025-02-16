@@ -156,5 +156,7 @@
   "Current Password": "Current Password",
   "New Password": "New Password",
   "Confirm Delete": "Are you sure you want to delete this post?",
-  "Confirm": "Confirm"
+  "Confirm": "Confirm",
+  "Reports": "Reports",
+  "report count": "Report count"
 }

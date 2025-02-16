@@ -75,7 +75,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="add"
+                name="(add)"
                 options={{
                     title: `${t('Add')}`,
                     tabBarIcon: ({ color }) => <Ionicons name="add-circle" size={25} color={color} />,

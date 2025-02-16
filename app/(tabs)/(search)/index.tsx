@@ -179,9 +179,11 @@ export default function SearchScreen() {
                     style={{flexDirection: "column", backgroundColor: currentTheme === 'dark' ? 'black' : '#F2F2F2',}}>
                     <View style={{flexDirection: 'row'}}>
 
-                        {data.map(item => (
+                        {data.map((item,index) => (
                             <Link href={`/category/${item.name}`}
-                                  style={{marginRight: 7.5, marginLeft: 7.5, marginTop: 8}}>
+                                  style={{ marginLeft: 7.5, marginTop: 8,
+                                      marginRight: index === data2.length - 1 ? 7.5 : 0
+                                  }}>
 
                                 <CategoryPost key={item.id} name={item.name_transl} imageUrl={item.imageUrl}
                                               api_url={api_url}/>
@@ -190,9 +192,11 @@ export default function SearchScreen() {
                     </View>
                     <View style={{flexDirection: 'row'}}>
 
-                        {data2.map(item => (
+                        {data2.map((item,index) => (
                             <Link href={`/category/${item.name}`}
-                                  style={{marginRight: 7.5, marginLeft: 7.5, marginTop: 8}}>
+                                  style={{ marginLeft: 7.5, marginTop: 8,
+                                      marginRight: index === data2.length - 1 ? 7.5 : 0
+                                  }}>
 
                                 <CategoryPost key={item.id} name={item.name_transl} imageUrl={item.imageUrl}
                                               api_url={api_url}/>

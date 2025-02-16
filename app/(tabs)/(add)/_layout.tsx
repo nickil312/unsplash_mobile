@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import React from "react";
 import {Stack} from "expo-router";
 
-export default function SearchLayout() {
+export default function AddLayout() {
     const colorScheme = useColorScheme();
     const {t} = useTranslation();
 
@@ -11,15 +11,9 @@ export default function SearchLayout() {
         <Stack>
             <Stack.Screen name="index"
                           options={{
-                              title: `${t('Search')}`,
+                              title: `${t('Add')}`,
                           }}
             />
-            <Stack.Screen name="category/[category]" options={{
-                title: `${t('Category')}`,
-            }}/>
-            <Stack.Screen name="search/[text]" options={{
-                title: `${t('Search')}`,
-            }}/>
             <Stack.Screen name="users/[id]" options={{
                 title: `${t('Profile')}`,
             }}/>
@@ -37,6 +31,18 @@ export default function SearchLayout() {
             <Stack.Screen name="details/statistics/[id]" options={{
                 title: `${t('Photo')}`,
                 // presentation: "modal"
+            }}/>
+            <Stack.Screen name="banned/index" options={{
+                title: `${t('Banned Posts')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="reported/index" options={{
+                title: `${t('Reports')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="reported/[id]" options={{
+                title: `${t('Reports')}`,
+                presentation: "modal"
             }}/>
         </Stack>
     )

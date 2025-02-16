@@ -52,6 +52,10 @@ export default function HomeLayout() {
                 title: `${t('Photo')}`,
                 // presentation: "modal"
             }}/>
+            <Stack.Screen name="collectionsmodal/[id]" options={{
+                title: `${t('Collections')}`,
+                // presentation: "modal"
+            }}/>
         </Stack>
     );
 }
