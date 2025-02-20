@@ -2,7 +2,7 @@ import {Button, RefreshControl, ScrollView, StyleSheet} from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
-import {Link, Redirect, router} from "expo-router";
+import {Link, Redirect, router, useRouter} from "expo-router";
 import React, {useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/globalRedux/store";
@@ -148,7 +148,7 @@ export default function TabOneScreen() {
     // console.log(data)
     const dispatch = useDispatch<AppDispatch>(); // Вызов функции через переменную
     const {t} = useTranslation(); // Вызов функции перевода текста
-
+    const router = useRouter();
     const [userLogIn, setUserLogIn] = useState(false)
     // const isLoadingAccount = status === 'loading'
     const [isLoading, setIsLoading] = useState(false);
@@ -356,7 +356,7 @@ export default function TabOneScreen() {
 
                                 {/*    <Button color="red" title={t('Logout')} onPress={() => OnClickLogout()}/>*/}
                                 {/*    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>*/}
-                                {/*    /!*<EditScreenInfo path="app/(tabs)/index.tsx" />*!/*/}
+                                {/*    /!*<EditScreenInfo path="app/(tabs)/[id].tsx" />*!/*/}
                                 {/*</View>*/}
                             </>
 
@@ -365,6 +365,11 @@ export default function TabOneScreen() {
                             <View>
 
                             <Text>нет инетп(сервера)</Text>
+                            <Text>Перезагрузка</Text>
+                            <Text onPress={() => {
+                                router.push(`/(tabs)/(profile)/login`)
+
+                            }}>Авторизация</Text>
                             {/*<Text>{api_url}</Text>*/}
                             </View>
                             // <Redirect href="/(tabs)/(profile)/login"/>

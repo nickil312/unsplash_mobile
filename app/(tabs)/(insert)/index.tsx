@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "@/globalRedux/store";
 import {useRouter} from "expo-router";
 
-export default function Add(){
+export default function Insert(){
     const currentTheme = useColorScheme()
     const {t} = useTranslation();
     const {api_url, data} = useSelector((state: RootState) => state.users);
@@ -56,7 +56,9 @@ export default function Add(){
     return(
         <View>
         <Text style={styles.title}>{t('Contribute to Unsplash')}</Text>
-            <View style={styles.addcard}>
+            <View style={styles.addcard} onTouchEndCapture={() => {
+                router.push('/create')
+            }}>
                 <View style={styles.imageCont}>
                     <MaterialCommunityIcons name="image-plus" size={24}
                                             color={currentTheme === "dark" ? 'white' : "black"}/>
@@ -80,6 +82,7 @@ export default function Add(){
                     <></>
                 )
             }
+            {/*<Text>{data?.user_role_id}</Text>*/}
             {
                 data !== null && (data.user_role_id === 1 || data.user_role_id === 3) ? (
                     <View style={styles.view}>

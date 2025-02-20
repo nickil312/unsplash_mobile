@@ -29,7 +29,7 @@ export default function TabLayout() {
     const dispatch = useDispatch<AppDispatch>();
     const {api_url, data} = useSelector((state: RootState) => state.users);
 
-    useEffect( () => {
+    useEffect(() => {
         // await dispatch(fetchAuthMe());
         // // if (data !== null) {
         //
@@ -54,6 +54,7 @@ export default function TabLayout() {
     }, [])
     return (
         <Tabs
+            // initialRouteName="(search)" // Указываем, что главной страницей будет "Home"
             screenOptions={({route}) => ({
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
                 headerShown: useClientOnlyValue(false, false),
@@ -64,7 +65,7 @@ export default function TabLayout() {
                 name="(home)"
                 options={{
                     title: `${t('Home')}`,
-                    tabBarIcon: ({color}) => <Ionicons name="image" size={25} color={color} />,
+                    tabBarIcon: ({color}) => <Ionicons name="image" size={25} color={color}/>,
                 }}
             />
             <Tabs.Screen
@@ -75,10 +76,10 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="(add)"
+                name="(insert)"
                 options={{
                     title: `${t('Add')}`,
-                    tabBarIcon: ({ color }) => <Ionicons name="add-circle" size={25} color={color} />,
+                    tabBarIcon: ({color}) => <Ionicons name="add-circle" size={25} color={color}/>,
                 }}
             />
             <Tabs.Screen

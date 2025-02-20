@@ -89,7 +89,18 @@ export default function ProfileLayout() {
                 title: `${t('Photo')}`,
                 // presentation: "modal"
             }}/>
-
+            <Stack.Screen name="details/update/[id]" options={{
+                title: `${t('Photo')}`,
+                // presentation: "modal"
+            }}/>
+            <Stack.Screen name="details/report/[id]" options={{
+                title: `${t('Create Report')}`,
+                presentation: "modal"
+            }}/>
+            <Stack.Screen name="details/ban/[id]" options={{
+                title: `${t('Ban Post')}`,
+                presentation: "modal"
+            }}/>
         </Stack>
     );
 }

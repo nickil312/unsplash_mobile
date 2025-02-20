@@ -252,6 +252,10 @@ export default function PostDetail() {
                                     {/*navigation.navigate("CreatePost",{id: id})*/}
                                     {/*<View style={styles.button} onTouchEndCapture={() => navigation.navigate('AddNav',{screen: 'CreatePost', params:{id: id} })}>*/}
                                     <View style={styles.button}
+                                          onTouchEndCapture={() => {
+                                              router.push(`/details/update/${id}`)
+
+                                          }}
                                         // onTouchEndCapture={() => navigation.navigate('ChangePost', {id: id})}
                                     >
                                         <Button title={t('Edit')} color="black"/>
@@ -271,7 +275,7 @@ export default function PostDetail() {
                                                         style: "cancel"
                                                     },
                                                     {
-                                                        text: "OK" ,
+                                                        text: "OK",
                                                         onPress: () => {
                                                             const params = {
                                                                 _id: id
@@ -281,7 +285,7 @@ export default function PostDetail() {
                                                         }
                                                     }
                                                 ],
-                                                { cancelable: false } // Не позволяет закрыть окно, нажав вне его
+                                                {cancelable: false} // Не позволяет закрыть окно, нажав вне его
                                             );
                                         }} color="red"/>
                                     </View>
@@ -297,7 +301,7 @@ export default function PostDetail() {
                                         router.push(`/details/statistics/${id}`)
                                     }} title={t('Statistics')} color="black"/>
                                 </View>
-                                    {/*</Link>*/}
+                                {/*</Link>*/}
                                 {/*</View>*/}
                             </>
                         ) : (
@@ -306,33 +310,58 @@ export default function PostDetail() {
                     }
                     {/*<PostText>{user_data_get._id} </PostText>*/}
                     {/*<PostText>{userData._id} </PostText>*/}
-                    {/*<PostText>{userData.user_role_id} </PostText>*/}
+                    {/*<Text>{items.user_id} </Text>*/}
+                    {/*<Text>{data?._id} </Text>*/}
+                    {/*<Text>{data?.user_role_id} </Text>*/}
                     {
                         data !== null ? (
 
 
-                            data.user_role_id === 1 && data._id !== data._id ? (
+                            data.user_role_id === 3 && (items.user_id !== data._id) ? (
 
                                 <View style={styles.view}>
-                                    <View style={styles.ban_button}
-                                        // onTouchEndCapture={() => navigation.navigate('BanPost', {id: id})}
-                                    >
-                                        <Button title={t('Ban Post')} color="red"/>
-                                    </View>
+                                    <Link href={{
+                                        // /[banned]
+                                        pathname: '/details/ban/[id]',
+                                        params: {id:id, banned:items?.banned}
+                                    }}>
+                                        <View style={styles.ban_button}
+                                            // onTouchEndCapture={() => {
+                                            //     router.push(`/details/ban/${id}/${items?.banned}`)
+                                            // }}
+                                        >
+
+                                            <Button title={t('Ban Post')} color="red"/>
+                                        </View>
+                                    </Link>
                                 </View>
 
 
-                            ) : data.user_role_id === 2 && data._id !== data._id ? (
+                            ) : (
+                                <>
+                                </>
+                            )
+                        ) : (
+                            <></>
+                        )
+                    }
+                    {
+                        data !== null ? (
+
+                            data.user_role_id === 2 && (items.user_id !== data._id) ? (
                                 <View style={styles.view}>
                                     <View style={styles.ban_button}
+                                          onTouchEndCapture={() => {
+                                              router.push(`/details/report/${id}`)
+
+                                          }}
                                         // onTouchEndCapture={() => navigation.navigate('ReportPost', {id: id})}
                                     >
                                         <Button title={t('Report Post')} color="red"/>
                                     </View>
                                 </View>
                             ) : (
-                                <>
-                                </>
+                                <></>
                             )
                         ) : (
                             <>
@@ -375,8 +404,8 @@ export default function PostDetail() {
                         <View style={styles.item}>
                             <Link href={{
                                 pathname: '/addtocollection/[id]',
-                                params: {id:items._id,imageUrl:items.imageurl}
-                            }} >
+                                params: {id: items._id, imageUrl: items.imageurl}
+                            }}>
 
                                 <Feather name="plus" size={36}
                                          color={currentTheme === "dark" ? 'white' : "black"}/>
@@ -388,7 +417,7 @@ export default function PostDetail() {
                         // style={{marginTop: 5}}
                         //       color={currentTheme === "dark" ? 'white' : "black"}
                     >{t('Likes')}: {items.likecount}</Text>
-                    <Link href={`/users/${items.user_id}`} style={{marginTop:5}}>
+                    <Link href={`/users/${items.user_id}`} style={{marginTop: 5}}>
 
                         <View
                             // onTouchEndCapture={() => navigation.navigate("AccountView", {user_id: user_data_get._id})}

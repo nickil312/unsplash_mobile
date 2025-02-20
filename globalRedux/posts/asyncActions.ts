@@ -19,7 +19,7 @@ import {
     UserPosts_Likes_coll_Params,
     ViewsLikes,
 } from "@/globalRedux/posts/types";
-import {FormData} from "@/app/[lang]/(photos & illustrations)/photos/create/CreateForm";
+
 import {ReportsCardProps} from "@/app/components/Cards/ReportsCard";
 export const fetchAllPosts = createAsyncThunk<Posts[], SearchAndSortParams>(
     'users/fetchAllPosts', async (params) => {

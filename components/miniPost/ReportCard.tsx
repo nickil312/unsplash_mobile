@@ -1,4 +1,4 @@
-import {ReportsCardProps} from "@/app/(tabs)/(add)/reported";
+import {ReportsCardProps} from "@/app/(tabs)/(insert)/reported";
 import {View, Text, Image, useColorScheme} from "react-native";
 import React from "react";
 import {useTranslation} from "react-i18next";

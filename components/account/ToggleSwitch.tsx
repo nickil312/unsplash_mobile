@@ -20,6 +20,7 @@ import {AppDispatch, RootState} from "@/globalRedux/store";
 import {logout} from "@/globalRedux/users/slice";
 import AccountPhotos from "@/components/account/AccountPhotos";
 import AccountLikes from "@/components/account/AccountLikes";
+import {useRouter} from "expo-router";
 
 
 export default function ToggleSwitch() {
@@ -36,11 +37,13 @@ export default function ToggleSwitch() {
     const dispatch = useDispatch<AppDispatch>();
     const currentTheme = useColorScheme()
     const [changeThemes, setChangeThemes] = useState("Photos")
-
+    const router = useRouter();
 
     const OnClickLogout = async () => {
         dispatch(logout());
         await SecureStore.deleteItemAsync('token')
+        router.push('/(tabs)/(profile)/login')
+
     }
 
     const styles = StyleSheet.create({
