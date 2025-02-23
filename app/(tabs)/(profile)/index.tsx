@@ -367,11 +367,12 @@ export default function TabOneScreen() {
                             <Text>нет инетп(сервера)</Text>
                             <Text>Перезагрузка</Text>
                             <Text onPress={() => {
-                                router.push(`/(tabs)/(profile)/login`)
+                                router.dismissTo(`/(tabs)/(profile)/login`)
 
                             }}>Авторизация</Text>
                             {/*<Text>{api_url}</Text>*/}
                             </View>
+
                             // <Redirect href="/(tabs)/(profile)/login"/>
                             // <Regist navigation={navigation}/>
                         )

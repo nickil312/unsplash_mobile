@@ -109,10 +109,10 @@ export default function Login () {
 
 
     return (
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center',width: '100%',padding:15}}>
 
             {/*<View style={styles.regcontainer}>*/}
-            <View style={{alignItems: 'center',justifyContent: 'center'}} className={"mt-3 bg-D1 w-5/6 border rounded-2xl border-transparent "}>
+            <View style={{alignItems: 'center',justifyContent: 'center',width: '100%'}} >
                 <Text style={{marginTop:10,fontSize: 24, color: currentTheme === "dark" ? 'white' : 'black'}}>
                     {t('Authtorization')}
                 </Text>
@@ -154,6 +154,13 @@ export default function Login () {
                         color="black"
                         title={t('authButton')}
                         onPress={handleSubmit(onSubmit)}
+                    />
+                </View>
+                <View style={styles.button2}>
+                    <Button
+                        color="black"
+                        title={t('regButton')}
+                        onPress={() => router.push('/register')}
                     />
                 </View>
                 <View style={styles.button2}>
