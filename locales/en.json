@@ -161,5 +161,12 @@
   "Report": "Report",
   "Create Report": "Create Report",
   "report count": "Report count",
-  "UnBan Post": "UnBan Post"
+  "UnBan Post": "UnBan Post",
+  "Messages": "Messages",
+  "Chats": "Chats",
+  "AddUser": "Add",
+  "Exit": "Exit",
+  "GroupChat": "Group chat",
+  "PersonalChat": "Personal chat",
+  "TechSupp": "Tech support"
 }

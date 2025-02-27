@@ -118,7 +118,7 @@ export const fetchUpdatePost = createAsyncThunk<Posts[], FormData>(
 
         console.log(params)
         const {data} = await axios.patch<Posts[]>(`/postgresql/posts/${params._id}`,params)
-        console.log('update users ', data)
+        console.log('detail users ', data)
         return data;
     })
 export const fetchDeletePost = createAsyncThunk<Posts[], DeleteId>(
@@ -127,7 +127,7 @@ export const fetchDeletePost = createAsyncThunk<Posts[], DeleteId>(
 
         console.log(params)
         const {data} = await axios.delete<Posts[]>(`/postgresql/posts/${params._id}`)
-        console.log('update users ', data)
+        console.log('detail users ', data)
         return data;
     })
 export const fetchBannedPosts = createAsyncThunk<Posts[], Banned_Params>(
@@ -299,7 +299,7 @@ export const fetchUpdateCollection = createAsyncThunk<Collections[],CollectionUp
     async (params) => {
 
         const {data} = await axios.patch<Collections[]>(`/postgresql/collections/${params.id}`,params)
-        console.log('update collection', data)
+        console.log('detail collection', data)
         return data;
     });
 export const fetchDeleteOrRecoverCollection = createAsyncThunk<Collections[],CollectionDeleteOrRecoverForm>(
@@ -307,6 +307,6 @@ export const fetchDeleteOrRecoverCollection = createAsyncThunk<Collections[],Col
     async (params) => {
 
         const {data} = await axios.delete<Collections[]>(`/postgresql/collections/${params.id}?recover=${params.recover}`)
-        console.log('update collection', data)
+        console.log('detail collection', data)
         return data;
     });

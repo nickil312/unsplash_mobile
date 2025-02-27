@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import {Link, router, Tabs} from 'expo-router';
 import {Pressable} from 'react-native';
-import {Entypo, Ionicons} from "@expo/vector-icons";
+import {Entypo, Feather, Ionicons} from "@expo/vector-icons";
 
 import Colors from '@/constants/Colors';
 import {useColorScheme} from '@/components/useColorScheme';
@@ -73,6 +73,13 @@ export default function TabLayout() {
                 options={{
                     title: `${t('Search')}`,
                     tabBarIcon: ({color}) => <Ionicons name="search" size={25} color={color}/>,
+                }}
+            />
+            <Tabs.Screen
+                name="(messages)"
+                options={{
+                    title: `${t('Chats')}`,
+                    tabBarIcon: ({color}) => <Feather name="message-circle" size={25} color={color} />,
                 }}
             />
             <Tabs.Screen
