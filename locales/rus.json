@@ -176,6 +176,10 @@
   "Exit": "Выйти",
   "GroupChat": "Групповой чат",
   "PersonalChat": "Персональный чат",
-  "TechSupp": "техподдержки"
-
+  "TechSupp": "Тех. поддержки",
+  "Create group chat": "Создать групповой чат",
+  "Enter message": "Введите сообщение...",
+  "Enter text": "Enter text...",
+"Enter username": "Введите имя",
+  "Confirm exit": "Вы точно хотите покинуть чат?"
 }

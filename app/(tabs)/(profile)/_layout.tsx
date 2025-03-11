@@ -30,7 +30,7 @@ export default function ProfileLayout() {
                           }}
             />
             <Stack.Screen name="register" options={{
-                title: 'Register',
+                title: t('regTitle'),
                 headerRight: () => (
                     <Link href="/(tabs)/(profile)/settings" asChild>
                         <Pressable>

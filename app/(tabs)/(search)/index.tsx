@@ -159,7 +159,7 @@ export default function SearchScreen() {
     return (
         <ScrollView style={styles.container}>
             {/*<Text style={styles.title}>Search</Text>*/}
-            <TextInput placeholder="search test"
+            <TextInput placeholder={t('Enter text')}
                        value={value} // Привязываем значение поля ввода к состоянию
                        onChangeText={setValue} // Обновляем состояние при изменении текста
                        onSubmitEditing={handleSearch} // Вызываем функцию поиска при отправке
@@ -171,6 +171,7 @@ export default function SearchScreen() {
                            marginLeft: 8,
                            marginRight: 8,
                            backgroundColor: currentTheme === 'dark' ? 'black' : 'white',
+                           color:currentTheme === "dark" ? 'white' : 'black'
                        }} // Пример стилей
 
             />

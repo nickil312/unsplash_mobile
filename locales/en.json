@@ -168,5 +168,11 @@
   "Exit": "Exit",
   "GroupChat": "Group chat",
   "PersonalChat": "Personal chat",
-  "TechSupp": "Tech support"
+  "TechSupp": "Tech support",
+  "Create group chat": "Create group chat",
+  "Enter message": "Enter message...",
+  "Enter text": "Enter text...",
+  "Enter username": "Enter username",
+  "Confirm exit": "Are you sure you want to leave the chat?",
+  "You need to register/login": "You need to register/login"
 }

@@ -154,84 +154,84 @@ export default function CreateChat() {
 
         },
     });
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 1,
-        });
-
-        if (!result.canceled) {
-
-            const big_im = result.assets
-
-            // console.log(result)
-            // console.log(big_im)
-            const originalname = big_im[0].uri.substring(big_im[0].uri.lastIndexOf("/") + 1);
-            big_im[0].originalname = `${originalname}`
-            setImage(big_im);
-
-        }
-    };
-    const ChangeImage = async () => {
-        // if(imageIsJussed) {
-            if (data !== null) {
-
-                // setloading(true);
-                // Alert.alert(1);
-                console.log("imageChouse")
-                const formData = new FormData();
-
-                formData.append('image', {
-                    uri: image[0].uri,
-                    name: image[0].originalname,
-                    type: 'image/jpeg'
-                });
-                const userToken = await SecureStore.getItemAsync('token');
-                // console.log(userToken)
-                const response = await fetch(`${api_url}/upload`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${userToken}`,
-                        'Content-Type': 'multipart/form-data'
-                    },
-                    body: formData
-                });
-
-                // Alert.alert(2);
-                // console.log("sending fuick sdfsdfsd")
-                const responseData = await response.json();
-                // console.log(">?>?>?>?>>?>?>?>?>?>?>")
-                // console.log(responseData)
-                // console.log(">?>?>?>?>>?>?>?>?>?>?>")
-
-                // const datasend = {
-                //     email: data.email,
-                //     avatarurl: responseData.compressedUrl
-                // }
-                console.log("responseData",responseData)
-                setImage(responseData.compressedUrl);
-                console.log("image",image)
-
-                // console.log("datasend",datasend)
-
-                // Alert.alert(3);
-                //
-                // console.log(">?>?>?>?>>?>?>?>?>?>?>")
-                // console.log(datasend)
-                // console.log(">?>?>?>?>>?>?>?>?>?>?>")
-
-                // const res = await dispatch(fetchChangeProfileImg(datasend))
-                // console.log(res)
-                // setloading(false);
-                // Alert.alert(4);
-            }
-        // }
-        // else{
-        //     Alert.alert(t("ImageNotJused"),t("ChooseImageInCircle"))
-        // }
-    }
+    // const pickImage = async () => {
+    //     let result = await ImagePicker.launchImageLibraryAsync({
+    //         mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    //         allowsEditing: true,
+    //         aspect: [1, 1],
+    //         quality: 1,
+    //     });
+    //
+    //     if (!result.canceled) {
+    //
+    //         const big_im = result.assets
+    //
+    //         // console.log(result)
+    //         // console.log(big_im)
+    //         const originalname = big_im[0].uri.substring(big_im[0].uri.lastIndexOf("/") + 1);
+    //         big_im[0].originalname = `${originalname}`
+    //         setImage(big_im);
+    //
+    //     }
+    // };
+    // const ChangeImage = async () => {
+    //     // if(imageIsJussed) {
+    //         if (data !== null) {
+    //
+    //             // setloading(true);
+    //             // Alert.alert(1);
+    //             console.log("imageChouse")
+    //             const formData = new FormData();
+    //
+    //             formData.append('image', {
+    //                 uri: image[0].uri,
+    //                 name: image[0].originalname,
+    //                 type: 'image/jpeg'
+    //             });
+    //             const userToken = await SecureStore.getItemAsync('token');
+    //             // console.log(userToken)
+    //             const response = await fetch(`${api_url}/upload`, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Authorization': `Bearer ${userToken}`,
+    //                     'Content-Type': 'multipart/form-data'
+    //                 },
+    //                 body: formData
+    //             });
+    //
+    //             // Alert.alert(2);
+    //             // console.log("sending fuick sdfsdfsd")
+    //             const responseData = await response.json();
+    //             // console.log(">?>?>?>?>>?>?>?>?>?>?>")
+    //             // console.log(responseData)
+    //             // console.log(">?>?>?>?>>?>?>?>?>?>?>")
+    //
+    //             // const datasend = {
+    //             //     email: data.email,
+    //             //     avatarurl: responseData.compressedUrl
+    //             // }
+    //             console.log("responseData",responseData)
+    //             setImage(responseData.compressedUrl);
+    //             console.log("image",image)
+    //
+    //             // console.log("datasend",datasend)
+    //
+    //             // Alert.alert(3);
+    //             //
+    //             // console.log(">?>?>?>?>>?>?>?>?>?>?>")
+    //             // console.log(datasend)
+    //             // console.log(">?>?>?>?>>?>?>?>?>?>?>")
+    //
+    //             // const res = await dispatch(fetchChangeProfileImg(datasend))
+    //             // console.log(res)
+    //             // setloading(false);
+    //             // Alert.alert(4);
+    //         }
+    //     // }
+    //     // else{
+    //     //     Alert.alert(t("ImageNotJused"),t("ChooseImageInCircle"))
+    //     // }
+    // }
 
     const onSubmit = async (values) => {
         if (values.chatName === ' ') {
@@ -345,7 +345,9 @@ export default function CreateChat() {
             <View style={styles.userCard}>
                 {/*{*/}
                 {/*    data !== null ? (*/}
-                <View onTouchEndCapture={() => pickImage()}>
+                <View
+                    // onTouchEndCapture={() => pickImage()}
+                >
                     {
                         image !== null ? (
                             // <CircleImage img={image[0].uri}/>
@@ -362,8 +364,8 @@ export default function CreateChat() {
                         )
                     }
                 </View>
-                <Button color={currentTheme === "dark" ? "#FFF" : "#000"}
-                        title={t("Change Profile Photo")}  onPress={() => ChangeImage()}/>
+                {/*<Button color={currentTheme === "dark" ? "#FFF" : "#000"}*/}
+                {/*        title={t("Change Profile Photo")}  onPress={() => ChangeImage()}/>*/}
             </View>
             <View style={{padding: 15}}>
                 <Text style={styles.label}>{t('Title')}</Text>
@@ -381,12 +383,12 @@ export default function CreateChat() {
                     name="chatName"
                     rules={{required: true, maxLength: 20}}
                 />
-                <Text style={styles.label}>{t('Bio')}</Text>
+                <Text style={styles.label}>{t('Description')}</Text>
                 <Controller
                     control={control}
                     render={({field: {onChange, onBlur, value}}) => (
                         <TextInput
-                            placeholder={t('Bio')}
+                            placeholder={t('Description')}
                             style={styles.inputBio}
                             onBlur={onBlur}
                             onChangeText={value => onChange(value)}
@@ -405,7 +407,7 @@ export default function CreateChat() {
                         },
                     }}
                 />
-                <Text style={styles.label}>{t('Messaging')}</Text>
+                <Text style={styles.label}>{t('TechSupp')}</Text>
                 <Switch
                     style={{marginTop: 20}}
                     // trackColor={{false: '#767577', true: '#d2d2d2'}}
@@ -418,7 +420,7 @@ export default function CreateChat() {
                     <Button
                         disabled={!isValid}
                         color="black"
-                        title={t('Change Profile Data')}
+                        title={t('Create group chat')}
                         onPress={handleSubmit(onSubmit)}
                     />
                 </View>

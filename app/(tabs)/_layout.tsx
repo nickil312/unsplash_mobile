@@ -75,13 +75,13 @@ export default function TabLayout() {
                     tabBarIcon: ({color}) => <Ionicons name="search" size={25} color={color}/>,
                 }}
             />
-            <Tabs.Screen
-                name="(messages)"
-                options={{
-                    title: `${t('Chats')}`,
-                    tabBarIcon: ({color}) => <Feather name="message-circle" size={25} color={color} />,
-                }}
-            />
+                    <Tabs.Screen
+                        name="(messages)"
+                        options={{
+                            title: `${t('Chats')}`,
+                            tabBarIcon: ({color}) => <Feather name="message-circle" size={25} color={color}/>,
+                        }}
+                    />
             <Tabs.Screen
                 name="(insert)"
                 options={{

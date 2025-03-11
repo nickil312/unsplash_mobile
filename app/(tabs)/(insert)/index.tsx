@@ -1,4 +1,4 @@
-import {useColorScheme, View, Text, StyleSheet, Button} from "react-native";
+import {useColorScheme, View, Text, StyleSheet, Button, Alert} from "react-native";
 import {useTranslation} from "react-i18next";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {useSelector} from "react-redux";
@@ -57,7 +57,12 @@ export default function Insert(){
         <View>
         <Text style={styles.title}>{t('Contribute to Unsplash')}</Text>
             <View style={styles.addcard} onTouchEndCapture={() => {
+
+                if (data !== null) {
                 router.push('/create')
+                }else {
+                    Alert.alert(t('Alert'),t('You need to register/login'))
+                }
             }}>
                 <View style={styles.imageCont}>
                     <MaterialCommunityIcons name="image-plus" size={24}

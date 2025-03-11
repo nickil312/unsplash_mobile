@@ -28,6 +28,14 @@ export default function ChatLayout() {
                     title: `${t('Chat')}`,
                     // presentation: "modal"
                 }}/>
+                <Stack.Screen name="chats/update/[id]" options={{
+                    title: `${t('Chat')}`,
+                    // presentation: "modal"
+                }}/>
+                <Stack.Screen name="chats/adduser/[id]" options={{
+                    title: `${t('Chat')}`,
+                    // presentation: "modal"
+                }}/>
             </Stack>
         </WebSocketProvider>
     )

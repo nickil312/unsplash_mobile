@@ -4,7 +4,7 @@ import {CircleImage} from "@/components/account/CircleImage";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "@/globalRedux/store";
-import {fetchChatDetail} from "@/globalRedux/chats/asyncActions";
+import {fetchChatDetail, fetchChatExit} from "@/globalRedux/chats/asyncActions";
 import {fetchDeletePost} from "@/globalRedux/posts/asyncActions";
 import {useTranslation} from "react-i18next";
 
@@ -91,12 +91,12 @@ export default function DetailChat() {
                     <View style={{flexDirection: 'column'}}>
 
 
-                        <Text style={{fontSize: 18, fontWeight: "bold"}}>
+                        <Text style={{fontSize: 18, fontWeight: "bold",color:currentTheme === "dark" ? 'white' : 'black'}}>
                             {
                                 chat_detail.chatName
                             }
                         </Text>
-                        <Text>
+                        <Text style={{color:currentTheme === "dark" ? 'white' : 'black'}}>
                             {
                                 chat_detail.description
                             }
@@ -112,8 +112,7 @@ export default function DetailChat() {
 
                             <View style={styles.button}
                                   onTouchEndCapture={() => {
-                                      // router.push(`/chats/update/${id}`)
-
+                                      router.push(`/chats/adduser/${id}`)
                                   }}
                                 // onTouchEndCapture={() => navigation.navigate('ChangePost', {id: id})}
                             >
@@ -138,7 +137,7 @@ export default function DetailChat() {
                         // onTouchEndCapture={() => DeletePost()}
                     >
                         <Button title={chat_detail.isGroup ? t('Exit') : t('Delete')} onPress={() => {
-                            const confirmMessage = t('Confirm Delete');
+                            const confirmMessage = t('Confirm exit');
 
                             Alert.alert(
                                 t('Подтверждение'),
@@ -151,11 +150,11 @@ export default function DetailChat() {
                                     {
                                         text: "OK",
                                         onPress: () => {
-                                            const params = {
-                                                _id: id
-                                            };
+                                            dispatch(fetchChatExit({
+                                                chatId: id
+                                            }))
                                             // dispatch(fetchDeletePost(params));
-                                            // router.push(`/${lang}`);
+                                            router.push('/(tabs)/(messages)');
                                         }
                                     }
                                 ],
@@ -186,7 +185,7 @@ export default function DetailChat() {
                                     source={{uri: `${api_url}/${user.avatarUrl}`}}
                                     alt="user photo"
                                 />
-                                <Text style={{}}>{user.fullName}</Text>
+                                <Text style={{color:currentTheme === "dark" ? 'white' : 'black'}}>{user.fullName}</Text>
                             </View>
                         </TouchableOpacity>
                     ))}

@@ -37,7 +37,11 @@ export const chatsSlice = createSlice({
         },
         crearChatOldMessages(state) {
             state.chat_old_Messages.items = []
-        }
+        },
+        clearAllChatsForExit(state) {
+            state.chatsAll.items = []
+            state.chatsAll.status = Status.SUCCESS
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchAllChats.pending, (state) => {
@@ -88,6 +92,6 @@ export const chatsSlice = createSlice({
         });
     },
 })
-export const {saveChat_info,crearChatOldMessages} = chatsSlice.actions;
+export const {saveChat_info,crearChatOldMessages,clearAllChatsForExit} = chatsSlice.actions;
 
 export default chatsSlice.reducer;

@@ -78,7 +78,7 @@ export default function Collection({_id,last_three_posts,Isprivate,name,deleted,
     })
 
     return(
-        <Link href={`/(tabs)/(profile)/collectionsmodal/${_id}`}>
+        <Link href={`/collectionsmodal/${_id}`}>
             <View style={styles.container}>
                 <View style={styles.photosContainer}>
                     {last_three_posts !== null && last_three_posts.length > 0 ? (

@@ -442,10 +442,10 @@ export default function Chat() {
             {/*/>*/}
             <View style={[styles.inputContainer, {backgroundColor: currentTheme === "dark" ? "#121212" : "#FFFFFF"}]}>
                 <TextInput
-                    style={[styles.input, {backgroundColor: currentTheme === "dark" ? "#1E1E1E" : "#F5F5F5"}]}
+                    style={[styles.input, {backgroundColor: currentTheme === "dark" ? "#1E1E1E" : "#F5F5F5",color:currentTheme === "dark" ? 'white' : 'black'}]}
                     value={messageInput}
                     onChangeText={setMessageInput}
-                    placeholder="Введите сообщение..."
+                    placeholder={t('Enter message')}
                     placeholderTextColor={currentTheme === "dark" ? "#B0B0B0" : "#888888"} // Цвет текста подсказки
                     onSubmitEditing={sendMessage}
                 />
