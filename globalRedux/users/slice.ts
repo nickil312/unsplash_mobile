@@ -22,8 +22,11 @@ import * as SecureStore from "expo-secure-store";
 
 const initialState: UsersSliceState = {
     // api_url: "http://172.20.10.2:4444",
-    api_url: "http://localhost:4444",
-    // api_url: "http://192.168.0.22:4444",
+    // api_url: "http://localhost:4444",
+    // api_url: "http://192.168.0.22:444
+    // 4",
+    api_url: "http://213.171.27.173:4444",
+
     // api_url: "http://192.168.1.44:4444",
     // api_url: "http://192.168.0.33:4444",
     data: null,

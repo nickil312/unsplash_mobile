@@ -52,8 +52,11 @@ export default function AllRooms() {
     const joinRoom = (roomId: string) => {
         if (data !== null) {
             console.log("id есть", data._id)
+            // const ws = new WebSocket(
+            //     `ws://localhost:8080/ws/joinRoom/${roomId}?userId=${data._id}&username=${data.fullname}&avatarUrl=${data.avatarurl}`
+            // )
             const ws = new WebSocket(
-                `ws://localhost:8080/ws/joinRoom/${roomId}?userId=${data._id}&username=${data.fullname}&avatarUrl=${data.avatarurl}`
+                `ws://213.171.27.173:5555/ws/joinRoom/${roomId}?userId=${data._id}&username=${data.fullname}&avatarUrl=${data.avatarurl}`
             )
             // ws.onopen = () =>{
             //     console.log("Connection opened");

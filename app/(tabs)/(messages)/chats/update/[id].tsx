@@ -234,29 +234,29 @@ export default function UpdateChat(){
 
         <ScrollView>
             {/*<View style={styles.userCard}>*/}
-            {/*    /!*{*!/*/}
-            {/*    /!*    data !== null ? (*!/*/}
-            {/*    /!*<View*!/*/}
-            {/*    /!*    onTouchEndCapture={() => pickImage()}*!/*/}
-            {/*    /!*>*!/*/}
-            {/*    /!*    /!*{*!/*!/*/}
-            {/*    /!*    /!*    image !== null ? (*!/*!/*/}
-            {/*    /!*    /!*        // <CircleImage img={image[0].uri}/>*!/*!/*/}
-            {/*    /!*    /!*        // <PostImage source={{uri: image[0].uri}}/>*!/*!/*/}
-            {/*    /!*            <View style={styles.container2}>*!/*/}
-            {/*    /!*                <Image*!/*/}
-            {/*    /!*                    style={styles.image}*!/*/}
-            {/*    /!*                    source={{uri: `${chatIcon ? `${chatIcon}` : `${api_url}/${chat_detail.chat_image}`}`}}*!/*/}
-            {/*    /!*                />*!/*/}
-            {/*    /!*            </View>*!/*/}
+            {/*    {*/}
+            {/*        data !== null ? (*/}
+            {/*    <View*/}
+            {/*        onTouchEndCapture={() => pickImage()}*/}
+            {/*    >*/}
+            {/*        /!*{*!/*/}
+            {/*        /!*    image !== null ? (*!/*/}
+            {/*        /!*        // <CircleImage img={image[0].uri}/>*!/*/}
+            {/*        /!*        // <PostImage source={{uri: image[0].uri}}/>*!/*/}
+            {/*                <View style={styles.container2}>*/}
+            {/*                    <Image*/}
+            {/*                        style={styles.image}*/}
+            {/*                        source={{uri: `${chatIcon ? `${chatIcon}` : `${api_url}/${chat_detail.chat_image}`}`}}*/}
+            {/*                    />*/}
+            {/*                </View>*/}
             {/*    */}
-            {/*    /!*    /!*    // ) : (*!/*!/*/}
-            {/*    /!*    /!*    //     <CircleImage img="uploads/down/Extra%20Large%20300x300.jpg" api_url={api_url}/>*!/*!/*/}
-            {/*    /!*    /!*    // )*!/*!/*/}
-            {/*    /!*    /!*}*!/*!/*/}
-            {/*    /!*</View>*!/*/}
-            {/*    /!*<Button color={currentTheme === "dark" ? "#FFF" : "#000"}*!/*/}
-            {/*    /!*        title={t("Change Profile Photo")}  onPress={() => ChangeImage()}/>*!/*/}
+            {/*        /!*    // ) : (*!/*/}
+            {/*        /!*    //     <CircleImage img="uploads/down/Extra%20Large%20300x300.jpg" api_url={api_url}/>*!/*/}
+            {/*        /!*    // )*!/*/}
+            {/*        /!*}*!/*/}
+            {/*    </View>*/}
+            {/*    <Button color={currentTheme === "dark" ? "#FFF" : "#000"}*/}
+            {/*            title={t("Change Profile Photo")}  onPress={() => ChangeImage()}/>*/}
             {/*</View>*/}
             <View style={{padding: 15}}>
                 <Text style={styles.label}>{t('Title')}</Text>

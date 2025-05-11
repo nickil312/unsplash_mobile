@@ -11,7 +11,10 @@ import {
 } from "@/globalRedux/chats/asyncActions";
 
 const initialState: ChatsSliceState = {
-    api_url: "http://localhost:4444",
+    // api_url: "http://localhost:4444",
+    api_url: "http://213.171.27.173:4444",
+    // baseURL:'http://213.171.27.173:4444'
+
     chat_info: null,
     chat_detail:null,
     chatsAll: {
